@@ -1,5 +1,9 @@
-/* Style cho scroll bar */
-/* WebKit */
+
+@import 'flowbite';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 ::-webkit-scrollbar {
   width: 8px;
   border-radius: 10px; /* Border radius cho thanh cuộn */
@@ -18,8 +22,3 @@
   background: #555; /* Màu của thanh cuộn khi hover */
 }
 
-
-@import 'flowbite';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
