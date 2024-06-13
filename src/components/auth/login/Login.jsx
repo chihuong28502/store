@@ -1,9 +1,10 @@
-import image from '../../../Images/image.jpg'
-import iconFacebook from '../../../Images/svg/Facebook.svg'
-import iconGoogle from '../../../Images/svg/Google.svg'
+import image from '@/Images/image.jpg'
+import iconFacebook from '@/Images/svg/Facebook.svg'
+import iconGoogle from '@/Images/svg/Google.svg'
+import { Link } from 'react-router-dom';
 function Login() {
   return (
-    <div className=" p-5 flex flex-col-reverse h-screen lg:flex lg:flex-row lg:justify-between lg:w-[100vw] lg:h-[100vh]">
+    <div className="md:mt-5 p-5 flex flex-col-reverse lg:flex lg:flex-row lg:justify-between">
       <div className="flex-1 flex gap-2 flex-col lg:w-[60%] lg:px-[15vw] lg:h-[100%] lg:flex-none lg:justify-center">
         <div className="">
           <h1 className="text-2xl font-bold py-3">Welcome Back 👋</h1>
@@ -32,7 +33,12 @@ function Login() {
             />
           </div>
           <a href="#" className="text-right mb-1 decoration-clone text-blue-700">Forget Password?</a>
-          <button className="h-11 rounded-lg bg-blue-600 text-white cursor-pointer">Sign in</button>
+          <div className="md:flex md:gap-2">
+            <button className="md:w-[50%] md:m-0 m-2 w-[100%] h-11 rounded-lg bg-blue-600 text-white cursor-pointer">Sign in</button>
+            <Link to={`/register`} className='md:w-[50%] md:m-0 m-2 w-[100%] flex justify-center h-11 rounded-lg bg-blue-600 text-white cursor-pointer'>
+              <button className="text-center">Sign up</button>
+            </Link>
+          </div>
         </form>
         <div className=" w-full flex items-center py-1">
           <div className="flex-1 h-px bg-gray-300"></div>
@@ -50,8 +56,8 @@ function Login() {
           </button>
         </div>
       </div>
-      <div className="w-full h-[30%] lg:w-[40%] lg:h-[100%]">
-        <img src={image} alt="image" className="w-full h-full rounded-xl object-cover" />
+      <div className="w-full h-[30%] lg:w-[40%] lg:h-[80%]">
+        <img src={image} alt="image" className="w-full lg:h-[80%] h-[50%] rounded-xl object-cover" />
       </div>
     </div>
   );

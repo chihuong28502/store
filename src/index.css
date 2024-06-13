@@ -1,5 +1,4 @@
-
-@import 'flowbite';
+@import "flowbite";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,4 +20,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Màu của thanh cuộn khi hover */
 }
-

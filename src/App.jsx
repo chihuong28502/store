@@ -1,14 +1,24 @@
-import Header from "./components/comp/header/Header";
-import Slider from "./components/comp/slider/Slider";
-import Loading from "./components/comp/loading/Loading";
-import Login from "./components/auth/login/Login";
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import listRouter from "./routes/routes";
+
 export default function App() {
   return (
     <>
-      {/* <Header /> */}
-      {/* <Slider /> */}
-      <Login />
-
+    <Routes>
+        {listRouter.map((route, index) => {
+          const ComponentSelect = route.component;
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={<ComponentSelect />}
+            />
+          );
+        })}
+      </Routes>
+      <ToastContainer />
     </>
   )
 }
