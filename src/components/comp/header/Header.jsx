@@ -8,7 +8,7 @@ function Header() {
     <>
       <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
         <div className=" flex flex-wrap justify-between items-center mx-auto  p-3">
-          <Link to={`/`} className=" md:order-2 order2 flex items-center space-x-3 rtl:space-x-reverse" >
+          <Link to={`/`} className=" md:order-2 order-2 flex items-center space-x-3 rtl:space-x-reverse" >
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Store
             </span>
@@ -36,7 +36,7 @@ function Header() {
               />
             </svg>
           </button>
-          <div className="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1"
+          <div className=" order-1 md:order-1 items-center justify-between font-medium hidden w-full md:flex md:w-auto"
             id="mega-menu-full"
           >
             <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -75,11 +75,10 @@ function Header() {
               </li>
             </ul>
           </div>
-          <div className="md:gap-5 gap-0 flex items-center md:order-3 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="md:order-3 order-3 md:gap-5 gap-0 flex items-center  space-x-3 md:space-x-0 rtl:space-x-reverse">
             <BagIcon />
             <IconSignInHeader />
           </div>
-
         </div>
         <ModalBag />
         <div

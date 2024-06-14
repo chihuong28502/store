@@ -15,7 +15,7 @@ function Slider() {
                 className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt={item.title}
               />
-              <div className="fillter absolute font-bold opacity-[1.1] text-white md:text-[1rem] text-[0.5rem] px-4 leading-relaxed m-0 -translate-x-1/2 left-1/2  md:bottom-[10%] bottom-[15%] md:w-[60%] w-[85%]">
+              <div className=" absolute font-bold opacity-[1.1] text-white md:text-[1rem] text-[0.5rem] px-4 leading-relaxed m-0 -translate-x-1/2 left-1/2  md:bottom-[10%] bottom-[15%] md:w-[60%] w-[85%]">
                 <p className="text-center  md:text-[1.2rem] text-[0.7rem]">{item.title}</p>
                 <p className="text-center  md:text-[1.2rem] text-[0.7rem]">{item.subTitle}</p>
                 <p>{item.description}</p>

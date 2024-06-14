@@ -3,7 +3,7 @@ function ModalBag() {
     <>
       <div
         id="drawer-navigation"
-        className="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
+        className="fixed top-0 left-0 z-40 w-80 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
         tabIndex={-1}
         aria-labelledby="drawer-navigation-label"
       >
@@ -172,6 +172,33 @@ function ModalBag() {
             </li>
           </ul>
         </div>
+        <footer className="border-t relative bottom-0">
+          <div>
+            <ol className="space-y-6 text-lg font-semibold child:flex child:justify-between mt-6">
+              <li className="flex justify-between items-center">
+                <h2>Subtotal</h2>
+                <p>₫891,640</p>
+              </li>
+              <li className="flex justify-between items-center">
+                <h2>
+                  Total <span className="text-secondary text-[#858585]">(VAT included)</span>
+                </h2>
+                <p>₫891,640</p>
+              </li>
+            </ol>
+            <a
+              aria-busy="false"
+              className="bg-black rounded-3xl group relative inline-flex items-center justify-center whitespace-nowrap text-lg text-center font-semibold cursor-pointer border-1 border-transparent motion-safe:transition-all disabled:pointer-events-none disabled:opacity-30 rounded-12 hover:opacity-80 active:opacity-60 w-full mt-28"
+            >
+              <span className="text-white inner flex items-center gap-8 text-center">
+                <div className="flex w-full justify-between gap-16 py-4 text-lg font-semibold">
+                  Proceed to Checkout
+                </div>
+              </span>
+            </a>
+          </div>
+        </footer>
+
       </div>
     </>
 

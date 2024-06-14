@@ -1,4 +1,4 @@
-import image from '@/Images/image.jpg'
+import image from '@/Images/auth/image.jpg'
 import iconFacebook from '@/Images/svg/Facebook.svg'
 import iconGoogle from '@/Images/svg/Google.svg'
 import { Link } from 'react-router-dom';
