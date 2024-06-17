@@ -1,7 +1,7 @@
-import RegisterPage from "@/components/pages/auth/register/RegisterPage";
-import LoginPage from "@/components/pages/auth/login/LoginPage";
-import Home from "@/components/pages/home/Home";
-import Products from "@/components/pages/products/Products";
+import RegisterPage from "../components/pages/auth/register/RegisterPage";
+import LoginPage from "../components/pages/auth/login/LoginPage";
+import Home from "../components/pages/home/Home";
+import ProductsPage from "../components/pages/products/ProductsPage";
 
 const listRouter = [
   {
@@ -18,7 +18,7 @@ const listRouter = [
   },
   {
     path: "/products",
-    component: Products,
+    component: ProductsPage,
   },
 ];
 export default listRouter;
