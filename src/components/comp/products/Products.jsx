@@ -20,17 +20,21 @@ function Products() {
   const toggleDropdown2 = () => {
     setIsOpen2(!isOpen2);
   };
-  // Đóng dropdown nếu click ra ngoài dropdown
-  const handleOutsideClick = (event) => {
-    if (!event.target.closest('.dropdown')) {
-      setIsOpen(false);
-    }
-  };
+
   const itemsPerPage = 6;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = dataProducts.slice(indexOfFirstItem, indexOfLastItem);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Đóng dropdown nếu click ra ngoài dropdown
+  const handleOutsideClick = (event) => {
+    if (!event.target.closest('.dropdown')) {
+      setIsOpen(false);
+      setIsOpen1(false);
+      setIsOpen2(false);
+    }
+  };
   // Đăng ký sự kiện click ra ngoài để đóng dropdown
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
@@ -38,6 +42,7 @@ function Products() {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
+
   return (
     <>
       <div className="container mx-auto py-8">
@@ -53,7 +58,7 @@ function Products() {
                     className="dropbtn text-black py-2 border-none cursor-pointer"
                     onClick={toggleDropdown}
                   >
-                    {isOpen == true ? "Sản phẩm -" : "Sản phẩm  +"}
+                    {isOpen ? "Sản phẩm -" : "Sản phẩm  +"}
                   </button>
                   <div className={`dropdown-content ${isOpen ? 'block' : 'hidden'}  
                   top-full bg-white min-w-64 shadow-md z-10`}
@@ -72,7 +77,7 @@ function Products() {
                     className="dropbtn text-black py-2 border-none cursor-pointer"
                     onClick={toggleDropdown1}
                   >
-                    {isOpen1 == true ? "Sản phẩm -" : "Sản phẩm  +"}
+                    {isOpen1 ? "Sản phẩm -" : "Sản phẩm  +"}
                   </button>
                   <div className={`dropdown-content ${isOpen1 ? 'block' : 'hidden'}  
                   top-full bg-white min-w-64 shadow-md z-10`}
@@ -91,7 +96,7 @@ function Products() {
                     className="dropbtn text-black py-2 border-none cursor-pointer"
                     onClick={toggleDropdown2}
                   >
-                    {isOpen2 == true ? "Sản phẩm -" : "Sản phẩm  +"}
+                    {isOpen2 ? "Sản phẩm -" : "Sản phẩm  +"}
                   </button>
                   <div className={`dropdown-content ${isOpen2 ? 'block' : 'hidden'}  
                   top-full bg-white min-w-64 shadow-md z-10`}
@@ -130,8 +135,6 @@ function Products() {
                   product={product}
                 />
               ))}
-
-              {/* Add more products as needed */}
             </div>
           </div>
         </div>
@@ -147,4 +150,5 @@ function Products() {
     </>
   )
 }
-export default Products
+
+export default Products;
