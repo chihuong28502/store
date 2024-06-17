@@ -2,22 +2,35 @@
 import dataProducts from "@/data/dataProducts"
 import Product from "./product/Product"
 import { useEffect, useState } from "react";
+import Pagination from "../pagination/Pagination";
 
 function Products() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Hàm để toggle hiển thị dropdown
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
+  const toggleDropdown1 = () => {
+    setIsOpen1(!isOpen1);
+  };
+  const toggleDropdown2 = () => {
+    setIsOpen2(!isOpen2);
+  };
   // Đóng dropdown nếu click ra ngoài dropdown
   const handleOutsideClick = (event) => {
     if (!event.target.closest('.dropdown')) {
       setIsOpen(false);
     }
   };
-
+  const itemsPerPage = 6;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = dataProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   // Đăng ký sự kiện click ra ngoài để đóng dropdown
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
@@ -33,18 +46,17 @@ function Products() {
           <div className="w-1/4 p-4 lg:block hidden">
             <h2 className="text-xl font-bold mb-4">BỘ LỌC</h2>
             <ul className="space-y-2">
-
+              <hr className="w-[50%]" />
               <li className="font-medium">
                 <div className="dropdown relative">
                   <button
-                    className="dropbtn bg-gray-200 text-black px-4 py-2 text-base border-none cursor-pointer"
+                    className="dropbtn text-black py-2 border-none cursor-pointer"
                     onClick={toggleDropdown}
                   >
-                    các loại
+                    {isOpen == true ? "Sản phẩm -" : "Sản phẩm  +"}
                   </button>
-                  <div
-                    className={`dropdown-content ${isOpen ? 'block' : 'hidden'
-                      }  top-full bg-white min-w-64 shadow-md z-10`}
+                  <div className={`dropdown-content ${isOpen ? 'block' : 'hidden'}  
+                  top-full bg-white min-w-64 shadow-md z-10`}
                   >
                     {/* Các mục trong menu dropdown */}
                     <a href="#" className="block px-4 py-2">Mục 1</a>
@@ -53,8 +65,45 @@ function Products() {
                   </div>
                 </div>
               </li>
-              <li className="font-medium">THƯƠNG HIỆU</li>
-              <li className="font-medium">KÍCH CỠ</li>
+              <hr className="w-[50%]" />
+              <li className="font-medium">
+                <div className="dropdown relative">
+                  <button
+                    className="dropbtn text-black py-2 border-none cursor-pointer"
+                    onClick={toggleDropdown1}
+                  >
+                    {isOpen1 == true ? "Sản phẩm -" : "Sản phẩm  +"}
+                  </button>
+                  <div className={`dropdown-content ${isOpen1 ? 'block' : 'hidden'}  
+                  top-full bg-white min-w-64 shadow-md z-10`}
+                  >
+                    {/* Các mục trong menu dropdown */}
+                    <a href="#" className="block px-4 py-2">Mục 1</a>
+                    <a href="#" className="block px-4 py-2">Mục 2</a>
+                    <a href="#" className="block px-4 py-2">Mục 3</a>
+                  </div>
+                </div>
+              </li>
+              <hr className="w-[50%]" />
+              <li className="font-medium">
+                <div className="dropdown relative">
+                  <button
+                    className="dropbtn text-black py-2 border-none cursor-pointer"
+                    onClick={toggleDropdown2}
+                  >
+                    {isOpen2 == true ? "Sản phẩm -" : "Sản phẩm  +"}
+                  </button>
+                  <div className={`dropdown-content ${isOpen2 ? 'block' : 'hidden'}  
+                  top-full bg-white min-w-64 shadow-md z-10`}
+                  >
+                    {/* Các mục trong menu dropdown */}
+                    <a href="#" className="block px-4 py-2">Mục 1</a>
+                    <a href="#" className="block px-4 py-2">Mục 2</a>
+                    <a href="#" className="block px-4 py-2">Mục 3</a>
+                  </div>
+                </div>
+              </li>
+              <hr className="w-[50%]" />
             </ul>
           </div>
           {/* Main Content */}
@@ -75,7 +124,7 @@ function Products() {
               </a>
             </nav>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-              {dataProducts?.map((product, index) => (
+              {currentItems?.map((product, index) => (
                 <Product
                   key={index}
                   product={product}
@@ -86,10 +135,16 @@ function Products() {
             </div>
           </div>
         </div>
+        <div className="">
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={dataProducts.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </div>
       </div >
-
     </>
   )
 }
-
 export default Products
