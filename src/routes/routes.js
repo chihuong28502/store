@@ -2,7 +2,7 @@ import RegisterPage from "@/components/pages/auth/register/RegisterPage";
 import LoginPage from "@/components/pages/auth/login/LoginPage";
 import Home from "@/components/pages/home/Home";
 import ProductsPage from "@/components/pages/products/ProductsPage";
-import ProductDetail from "@/components/comp/products/productDetail/ProductDetail";
+import ProductDetailPage from "@/components/pages/products/product/ProductDetailPage";
 // routes.js
 
 const listRouter = [
@@ -24,7 +24,7 @@ const listRouter = [
   },
   {
     path: "/productDetail",
-    component: ProductDetail,
+    component: ProductDetailPage,
   },
 ];
 export default listRouter;
