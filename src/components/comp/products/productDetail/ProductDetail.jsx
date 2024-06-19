@@ -51,13 +51,13 @@ export default function ProductDetail() {
         items: indicators,
       },
       onNext: () => {
-        console.log("next slider item is shown");
+        console.log("[Product] next slider item is shown");
       },
       onPrev: () => {
-        console.log("previous slider item is shown");
+        console.log("[Product] previous slider item is shown");
       },
       onChange: () => {
-        console.log("new slider item has been shown");
+        console.log("[Product] new slider item has been shown");
       },
     };
 
@@ -77,7 +77,7 @@ export default function ProductDetail() {
         data-carousel="slide"
         ref={carouselRef} // Attach ref to the carousel element
       >
-        <div className="relative lg:h-[1000px] xl:h-[800px] h-[600px] overflow-hidden rounded-xl mb-8">
+        <div className="relative lg:h-[1000px] xl:h-[800px] h-[650px] overflow-hidden rounded-xl mb-8">
           {images.map((item, index) => (
             <div
               className={`hidden duration-700 ease-in-out rounded-xl ${index === 0 ? "block" : "hidden"
