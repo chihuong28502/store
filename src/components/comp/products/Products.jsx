@@ -45,7 +45,7 @@ function Products() {
 
   return (
     <>
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto py-8 2xl:px-11">
         <div className="flex justify-center lg:justify-normal">
           {/* Sidebar */}
           <div className="w-1/4 p-4 lg:block hidden">
