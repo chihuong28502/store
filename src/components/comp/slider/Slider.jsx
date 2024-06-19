@@ -73,7 +73,7 @@ function Slider() {
   }, [dataSlider]);
 
   return (
-    <div id="default-carousel" className="relative w-full" data-carousel="slide" ref={carouselRef}>
+    <div id="default-carousel" className="relative w-full pt-[64px]" data-carousel="slide" ref={carouselRef}>
       <div className="relative h-56 overflow-hidden md:h-[40rem]">
         {dataSlider.map((item, index) => (
           <div

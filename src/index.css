@@ -3,6 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-multiple-carousel__arrow::before {
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 900;
+}
+.react-multiple-carousel__arrow {
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 40px;
+  min-height: 40px;
+}
 /* Additional styles */
 .dropdown:hover .dropdown-menu--animated {
   display: block !important;
