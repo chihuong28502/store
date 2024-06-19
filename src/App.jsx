@@ -4,8 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import listRouter from "./routes/routes";
 import 'flowbite';
 import 'flowbite/dist/flowbite.min.js';
+import slugify from "./utils/formatSlug";
 
 export default function App() {
+  console.log(slugify("Nguyễn Chí Hưởng"));
   return (
     <>
       <Routes>

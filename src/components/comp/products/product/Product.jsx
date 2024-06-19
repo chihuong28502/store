@@ -13,9 +13,12 @@ function Product({ product }) {
             alt="Candles Denim Knee Blow-out"
             className="w-full h-auto mb-4"
           />
-          <span className="absolute top-5 right-5 bg-red-600 text-white text-xs px-2 py-1">
-            20% OFF
-          </span>
+          <div className="sale absolute top-[20px] left-[30px] flex items-center flex-wrap">
+            <div className="bg-red-500 text-white px-2 py-1 rounded">
+              <span className="block text-center font-bold text-lg">20%</span>
+              <span className="block text-center">OFF</span>
+            </div>
+          </div>
           <p className="font-medium mb-2">{product.name}</p>
           <p className="text-red-600 font-bold">
             {formatCurrency(product.price)}

@@ -3,12 +3,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.sale::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  display: inline-block;
+  border-top: 5px solid #f05252;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  width: 25px;
+}
+
 .react-multiple-carousel__arrow::before {
+  z-index: 5;
   font-size: 1.3rem;
   color: #ffffff;
   font-weight: 900;
 }
 .react-multiple-carousel__arrow {
+  z-index: 5;
+
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.5);
   min-width: 40px;

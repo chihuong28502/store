@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
 import BagIcon from "./dropdown/BagIcon"
 import IconSignInHeader from "./dropdown/IconSignInHeader"
@@ -101,17 +102,21 @@ function Header() {
         </div>
         <ModalBag isOpen={isModalOpen} onClose={closeModal} />
         <div className={`mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-transparent border-y dark:bg-gray-800 dark:border-gray-600 ${isOpen ? '' : 'hidden'}`}>
-          <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
+          <div
+            className="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6"
+            style={{ overflowY: "auto", maxHeight: "40vh" }}
+          >
             <ul>
               <li>
-                <Link to={`/products`}
+                <a
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  href="/products"
                 >
                   <div className="font-semibold">Online Stores</div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {`Connect with third-party tools that your'e already using.`}
+                    Connect with third-party tools that you're already using.
                   </span>
-                </Link>
+                </a>
               </li>
               <li>
                 <a
@@ -120,7 +125,7 @@ function Header() {
                 >
                   <div className="font-semibold">Segmentation</div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {`Connect with third-party tools that your'e already using.`}
+                    Connect with third-party tools that you're already using.
                   </span>
                 </a>
               </li>
@@ -131,7 +136,7 @@ function Header() {
                 >
                   <div className="font-semibold">Marketing CRM</div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {`Connect with third-party tools that your'e already using.`}
+                    Connect with third-party tools that you're already using.
                   </span>
                 </a>
               </li>
@@ -144,7 +149,7 @@ function Header() {
                 >
                   <div className="font-semibold">Online Stores</div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {`Connect with third-party tools that your'e already using.`}
+                    Connect with third-party tools that you're already using.
                   </span>
                 </a>
               </li>
@@ -155,7 +160,7 @@ function Header() {
                 >
                   <div className="font-semibold">Segmentation</div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {`Connect with third-party tools that your'e already using.`}
+                    Connect with third-party tools that you're already using.
                   </span>
                 </a>
               </li>
@@ -166,12 +171,13 @@ function Header() {
                 >
                   <div className="font-semibold">Marketing CRM</div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {`Connect with third-party tools that your'e already using.`}
+                    Connect with third-party tools that you're already using.
                   </span>
                 </a>
               </li>
             </ul>
           </div>
+
         </div>
       </nav >
 

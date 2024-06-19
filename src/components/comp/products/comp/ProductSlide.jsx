@@ -19,6 +19,7 @@ const ProductSlide = () => {
   };
   return (
     <>
+      <h2 className="text-center my-8 text-3xl font-medium">Sản phẩm tương tự</h2>
       <Carousel
         responsive={responsive}
         infinite={true}
