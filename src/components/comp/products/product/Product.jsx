@@ -1,15 +1,23 @@
 /* eslint-disable react/prop-types */
-
-import formatCurrency from "@/utils/formatMoney"
-import { Link } from "react-router-dom"
+import { setDataDetail } from "@/redux/productsSlice";
+import formatCurrency from "@/utils/formatMoney";
+import slugify from "@/utils/formatSlug";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Product({ product }) {
+  const dispatch = useDispatch();
+  const handleClickProductDetail = (product) => {
+    dispatch(setDataDetail(product));
+  };
   return (
     <>
-      <Link to={`/productDetail`}>
-        <div className="relative p-4 cursor-pointer">
+      <Link
+        onClick={() => handleClickProductDetail(product)}
+        to={`/products/product/${slugify(product?.id)}`}>
+        <div className="relative p-4 cursor-pointer" >
           <img
-            src={product.imageSrc}
+            src={product?.imageSrc}
             alt="Candles Denim Knee Blow-out"
             className="w-full h-auto mb-4"
           />
@@ -19,9 +27,9 @@ function Product({ product }) {
               <span className="block text-center">OFF</span>
             </div>
           </div>
-          <p className="font-medium mb-2">{product.name}</p>
+          <p className="font-medium mb-2">{product?.name}</p>
           <p className="text-red-600 font-bold">
-            {formatCurrency(product.price)}
+            {formatCurrency(product?.price)}
 
           </p>
         </div>

@@ -3,80 +3,142 @@
     {
       "id": 1,
       "name": "Candles Combat Cargo Pants 1",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0001",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 2,
       "name": "Candles Combat Cargo Pants 2",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0002",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 3,
       "name": "Candles Combat Cargo Pants 3",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0003",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 4,
       "name": "Candles Combat Cargo Pants 4",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0004",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 5,
       "name": "Candles Combat Cargo Pants 5",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0005",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 6,
       "name": "Candles Combat Cargo Pants 6",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0006",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 7,
       "name": "Candles Combat Cargo Pants 7",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0007",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 8,
       "name": "Candles Combat Cargo Pants 8",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0008",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 9,
       "name": "Candles Combat Cargo Pants 9",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS0009",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     },
     {
       "id": 10,
       "name": "Candles Combat Cargo Pants 10",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": 11,
-      "name": "Candles Combat Cargo Pants 11",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": 12,
-      "name": "Candles Combat Cargo Pants 12",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": 13,
-      "name": "Candles Combat Cargo Pants 13",
-      "price": 9000000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
+      "price": 900000,
+      "series": "TS00010",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ]
     }
   ]
 }

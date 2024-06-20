@@ -23,7 +23,7 @@ const listRouter = [
     component: ProductsPage,
   },
   {
-    path: "/productDetail",
+    path: "/products/product/:slug",
     component: ProductDetailPage,
   },
 ];

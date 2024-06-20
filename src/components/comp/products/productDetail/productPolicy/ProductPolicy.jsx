@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 
-const ProductPolicy = () => {
+const ProductPolicy = ({ userData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
@@ -24,7 +25,7 @@ const ProductPolicy = () => {
         </p>
         <div className={`dropdown-menu dropdown-menu--animated dropdown-menu-6  mt-2 ${isOpen ? 'block' : 'hidden'}`}>
           <p className="font-normal text-[0.85rem]">
-            <strong className="block">CANDLES ALCOHOL T-SHIRT</strong>
+            <strong className="block">{userData.name}</strong>
             <strong>✦ Chất liệu</strong>: 100% Cotton 230 GSM<br />
             <strong>✦ Fitting</strong>: Oversized<br />
             <strong>✦ Chi tiết</strong>:<br />

@@ -1,8 +1,24 @@
+import { fetchProducts } from "@/redux/productsSlice";
+import slugify from "@/utils/formatSlug";
+import { useEffect } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import dataProducts from "@/data/dataProducts"
-import Product from "../product/Product"
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+import Loading from "../../loading/Loading";
+import Product from "../product/Product";
+
 const ProductSlide = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.data);
+  const status = useSelector((state) => state.products.status);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  if (status !== "succeeded") {
+    return <Loading />;
+  }
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -28,8 +44,10 @@ const ProductSlide = () => {
         containerClass="carousel-container"
         itemClass="carousel-item"
       >
-        {dataProducts.map((item, index) => (
-          <Product key={index} product={item} />
+        {products?.map((item) => (
+          <Link key={item.id} to={`/products/product/${slugify(item.id)}`}>
+            <Product product={item} />
+          </Link>
         ))}
       </Carousel>
     </>

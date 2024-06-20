@@ -1,20 +1,40 @@
 /* eslint-disable no-unused-vars */
-import dataProducts from "@/data/dataProducts"
-import Product from "./product/Product"
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "@/redux/productsSlice";
+import Loading from "../loading/Loading"; // Import component Loading
 import Pagination from "../pagination/Pagination";
 import Filter from "./comp/Filter";
+import Product from "./product/Product";
 
 function Products() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.data);
+  const status = useSelector((state) => state.products.status);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 6;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = dataProducts.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Use products directly from Redux state instead of dataProducts
+  const currentItems = products?.slice(indexOfFirstItem, indexOfLastItem);
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const handleProductClick = (product) => {
+    console.log(product);
+  };
 
+  // Render loading state if status is not "succeeded"
+  if (status !== "succeeded") {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -39,11 +59,12 @@ function Products() {
                 Kaki Pants
               </a>
             </nav>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6">
               {currentItems?.map((product, index) => (
                 <Product
                   key={index}
                   product={product}
+                  onClick={handleProductClick}
                 />
               ))}
             </div>
@@ -52,14 +73,14 @@ function Products() {
         <div className="">
           <Pagination
             itemsPerPage={itemsPerPage}
-            totalItems={dataProducts.length}
+            totalItems={products?.length}
             paginate={paginate}
             currentPage={currentPage}
           />
         </div>
       </div >
     </>
-  )
+  );
 }
 
 export default Products;

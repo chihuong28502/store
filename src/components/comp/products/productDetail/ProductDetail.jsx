@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import ProductPolicy from "./productPolicy/ProductPolicy";
 import ProductSlide from "../comp/ProductSlide";
+import ProductPolicy from "./productPolicy/ProductPolicy";
+import { useSelector } from "react-redux";
+import formatCurrency from "@/utils/formatMoney";
 
 export default function ProductDetail() {
+  const status = useSelector((state) => state.products.status);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('dataDetail');
+    if (storedData) {
+      setUserData(JSON.parse(storedData));
+    }
+  }, [status]);
+
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("S");
 
@@ -18,18 +30,10 @@ export default function ProductDetail() {
     }
   };
 
-  const images = [
-    "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_XdVqoEVZkQ.png",
-    "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_vic2IpfcpV.png",
-    "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_sct39tY67Q.png",
-    "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_vic2IpfcpV.png",
-    "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_sct39tY67Q.png",
-  ];
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 1,
+      items: 2,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -41,10 +45,15 @@ export default function ProductDetail() {
     },
   };
 
+  // Check if userData and imageDetail are defined before rendering Carousel
+  if (!userData || !userData?.imageDetail || userData?.imageDetail.length === 0) {
+    return null; // Or handle loading state or default content
+  }
+
   return (
     <>
       <div className="container w-3/4 xl:flex mx-auto my-10 pt-[64px]">
-        <div className="xl:w-2/3 relative w-full p-0 lg:mb-10">
+        <div className="xl:w-2/3 relative w-full p-0 lg:mb-10 mb-6">
           <Carousel
             responsive={responsive}
             infinite={true}
@@ -53,7 +62,7 @@ export default function ProductDetail() {
             containerClass="carousel-container"
             itemClass="carousel-item"
           >
-            {images.map((item, index) => (
+            {userData?.imageDetail?.map((item, index) => (
               <div key={index}>
                 <img
                   src={item}
@@ -67,9 +76,9 @@ export default function ProductDetail() {
         <div className="xl:w-1/3 w-full xl:ps-5 mx-2">
           <div>
             <div className="mb-4 border-b border-gray-300 pb-4">
-              <h3 className="mb-4 name-product text-3xl">Candles Holiday Tshirt</h3>
-              <p className="text-[1rem] text-[#5b5b5b]">Mã hàng : TS0046</p>
-              <p className="text-black font-bold text-[1.1rem]">410,000 VNĐ</p>
+              <h3 className="mb-4 name-product text-3xl">{userData?.name}</h3>
+              <p className="text-[1rem] text-[#5b5b5b]">Mã hàng : {userData?.series}</p>
+              <p className="text-black font-bold text-[1.1rem]">{formatCurrency(userData?.price)}</p>
             </div>
             <div className="">
               <p className="text-[1rem] text-[#5b5b5b]">Size</p>
@@ -78,7 +87,7 @@ export default function ProductDetail() {
                   <button
                     key={size}
                     className={`none-active ${selectedSize === size ? "bg-[#999]" : ""
-                    } border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px]`}
+                      } border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px]`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -109,14 +118,14 @@ export default function ProductDetail() {
                 </div>
               </div>
               <div className="w-full mb-5">
-                <button className="add-product w-full bg-black text-white py-4 text-lg font-medium">
+                <button className="add-product w-full bg-black text-white py-4 text-lg font-medium hover:bg-[#888] hover:text-[#000]">
                   Add to cart
                 </button>
               </div>
             </div>
           </div>
           <div className="">
-            <ProductPolicy />
+            <ProductPolicy userData={userData} />
           </div>
         </div>
       </div>
