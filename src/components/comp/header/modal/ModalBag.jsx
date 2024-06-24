@@ -1,19 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { fetchCart } from '@/redux/cartSlice';
+import formatCurrency from '@/utils/formatMoney';
 import { useEffect, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ItemCart from '../../cart/ItemCart';
 
 const ModalBag = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart.data);
 
-  useEffect(() => {
-    if (isOpen) {
-      dispatch(fetchCart());
-    }
-  }, [dispatch, isOpen]);
+
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -35,6 +33,9 @@ const ModalBag = ({ isOpen, onClose }) => {
     if (event.target === event.currentTarget) {
       onClose();
     }
+  };
+  const handleProceedToCheckout = () => {
+    navigate('/checkout'); 
   };
   return (
     <>
@@ -85,16 +86,21 @@ const ModalBag = ({ isOpen, onClose }) => {
                 <ol className="space-y-6 text-lg font-semibold child:flex child:justify-between mt-6">
                   <li className="flex justify-between items-center">
                     <h2>Subtotal</h2>
-                    <p>₫891,640</p> {/* Replace with actual subtotal calculation */}
+                    <p>{
+                      formatCurrency(cart?.reduce((sum, item) => sum + (item.price * item.quantity), 0))
+                    }</p>
                   </li>
                   <li className="flex justify-between items-center">
                     <h2>
                       Total <span className="text-secondary text-[#858585]">(VAT included)</span>
                     </h2>
-                    <p>₫891,640</p> {/* Replace with actual total calculation */}
+                    <p>{
+                      formatCurrency(cart?.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 1.08)
+                    }</p>
                   </li>
                 </ol>
                 <button
+                  onClick={handleProceedToCheckout}
                   aria-busy="false"
                   className="bg-black rounded-3xl group relative inline-flex items-center justify-center whitespace-nowrap text-lg text-center font-semibold cursor-pointer border-1 border-transparent motion-safe:transition-all disabled:pointer-events-none disabled:opacity-30 rounded-12 hover:opacity-80 active:opacity-60 w-full mt-28"
                 >

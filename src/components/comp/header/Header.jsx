@@ -3,9 +3,15 @@ import { Link } from "react-router-dom"
 import BagIcon from "./dropdown/BagIcon"
 import IconSignInHeader from "./dropdown/IconSignInHeader"
 import ModalBag from "./modal/ModalBag"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchCart } from "@/redux/cartSlice";
 
 function Header() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);

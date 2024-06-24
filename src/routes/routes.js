@@ -1,9 +1,9 @@
-import RegisterPage from "@/components/pages/auth/register/RegisterPage";
 import LoginPage from "@/components/pages/auth/login/LoginPage";
+import RegisterPage from "@/components/pages/auth/register/RegisterPage";
+import CheckOutPage from "@/components/pages/checkout/CheckOutPage";
 import Home from "@/components/pages/home/Home";
 import ProductsPage from "@/components/pages/products/ProductsPage";
 import ProductDetailPage from "@/components/pages/products/product/ProductDetailPage";
-import Cart from "@/components/comp/cart/Cart";
 // routes.js
 
 const listRouter = [
@@ -28,8 +28,8 @@ const listRouter = [
     component: ProductDetailPage,
   },
   {
-    path: "/cart",
-    component: Cart,
+    path: "/checkout",
+    component: CheckOutPage,
   },
 ];
 export default listRouter;

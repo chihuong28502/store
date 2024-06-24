@@ -1,15 +1,14 @@
+import {
+  addCartItem,
+  updateCartQuantity
+} from "@/redux/cartSlice";
+import formatCurrency from "@/utils/formatMoney";
 import { useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { useDispatch, useSelector } from "react-redux";
 import ProductSlide from "../comp/ProductSlide";
 import ProductPolicy from "./productPolicy/ProductPolicy";
-import { useSelector, useDispatch } from "react-redux";
-import formatCurrency from "@/utils/formatMoney";
-import {
-  fetchCart,
-  addCartItem,
-  updateCartQuantity,
-} from "@/redux/cartSlice"; // Đường dẫn của slice cartSlice
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -17,18 +16,13 @@ export default function ProductDetail() {
   const [userData, setUserData] = useState(null);
   const cartData = useSelector((state) => state.cart.data);
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("S"); // State để lưu size được chọn
-
+  const [selectedSize, setSelectedSize] = useState("S");
   useEffect(() => {
     const storedData = localStorage.getItem('dataDetail');
     if (storedData) {
       setUserData(JSON.parse(storedData));
     }
   }, [status]);
-
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
 
   const handleQuantityChange = (type) => {
     if (type === "increment") {
@@ -41,19 +35,17 @@ export default function ProductDetail() {
   };
 
   const handleSizeSelect = (size) => {
-    setSelectedSize(size); // Cập nhật state selectedSize khi người dùng chọn size
+    setSelectedSize(size);
   };
- 
-  console.log(userData);
+
   const handleAddItemCart = () => {
-    // Thông tin sản phẩm mới cần thêm hoặc cập nhật
     const product = {
       id: userData?.id.toString(),
       name: userData?.name,
       price: userData?.price,
       series: userData?.series,
       size: selectedSize,
-      image: userData?.imageSrc,
+      imageSrc: userData?.imageSrc,
       quantity,
       composition: userData?.composition,
     };
@@ -61,18 +53,13 @@ export default function ProductDetail() {
     const existingProductIndex = cartData.findIndex(
       item => item.name === product.name && item.size === product.size
     );
-    console.log(product);
     if (existingProductIndex !== -1) {
-      // Nếu sản phẩm đã có trong giỏ hàng, cập nhật số lượng sản phẩm
       const existingProduct = cartData[existingProductIndex];
       dispatch(updateCartQuantity({ id: existingProduct.id, quantity: existingProduct.quantity + quantity }));
     } else {
-      // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm mới vào giỏ hàng
-      dispatch(addCartItem({ ...product, id: (cartData.length).toString() }));
+      dispatch(addCartItem({ ...product, id: (cartData.length + 1).toString() }));
     }
   };
-
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -88,9 +75,8 @@ export default function ProductDetail() {
     },
   };
 
-  // Kiểm tra nếu không có dữ liệu sản phẩm hoặc hình ảnh sản phẩm
   if (!userData || !userData?.imageDetail || userData?.imageDetail.length === 0) {
-    return null; // Hoặc xử lý trạng thái loading hoặc hiển thị nội dung mặc định
+    return null;
   }
 
   return (
@@ -131,8 +117,7 @@ export default function ProductDetail() {
                     key={index}
                     className={`none-active ${selectedSize === size ? "bg-[#999]" : ""
                       } border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px]`}
-                    onClick={() => handleSizeSelect(size)} // Xử lý sự kiện khi chọn size
-                  >
+                    onClick={() => handleSizeSelect(size)} >
                     {size}
                   </button>
                 ))}

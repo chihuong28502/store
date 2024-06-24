@@ -153,73 +153,33 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "series": "TS0001",
-      "name": "Candles Combat Cargo Pants 1",
-      "size": "M",
-      "quantity": 57,
-      "composition": "600% Cotton",
-      "price": 900000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": "2",
-      "series": "TS0002",
-      "name": "Candles Combat Cargo Pants 2",
-      "size": "M",
-      "quantity": 1,
-      "composition": "600% Cotton",
-      "price": 900000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": "3",
-      "series": "TS0003",
-      "name": "Candles Combat Cargo Pants 3",
-      "size": "M",
-      "quantity": 1,
-      "composition": "300% Cotton",
-      "price": 900000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": "4",
-      "series": "TS0004",
+      "id": "16",
       "name": "Candles Combat Cargo Pants 4",
+      "price": 900000,
+      "series": "TS0004",
       "size": "M",
-      "quantity": 1,
-      "composition": "400% Cotton",
-      "price": 900000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": "5",
-      "series": "TS0005",
-      "name": "Candles Combat Cargo Pants 5",
-      "size": "M",
-      "quantity": 2,
-      "composition": "500% Cotton",
-      "price": 900000,
-      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg"
-    },
-    {
-      "id": "5",
-      "name": "Candles Combat Cargo Pants 1",
-      "price": 900000,
-      "series": "TS0001",
-      "size": "S",
-      "image": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
       "quantity": 1,
       "composition": "Cotton 100%"
     },
     {
-      "id": "6",
-      "name": "Candles Combat Cargo Pants 1",
+      "id": "9",
+      "name": "Candles Combat Cargo Pants 3",
       "price": 900000,
-      "series": "TS0001",
-      "size": "L",
-      "image": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
-      "quantity": 4,
+      "series": "TS0003",
+      "size": "S",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
+    },
+    {
+      "id": "10",
+      "name": "Candles Combat Cargo Pants 3",
+      "price": 900000,
+      "series": "TS0003",
+      "size": "XL",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
       "composition": "Cotton 100%"
     },
     {
@@ -227,9 +187,49 @@
       "name": "Candles Combat Cargo Pants 1",
       "price": 900000,
       "series": "TS0001",
+      "size": "S",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
+    },
+    {
+      "id": "8",
+      "name": "Candles Combat Cargo Pants 2",
+      "price": 900000,
+      "series": "TS0002",
       "size": "XL",
-      "image": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
-      "quantity": 6,
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
+    },
+    {
+      "id": "9",
+      "name": "Candles Combat Cargo Pants 10",
+      "price": 900000,
+      "series": "TS00010",
+      "size": "L",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
+    },
+    {
+      "id": "10",
+      "name": "Candles Combat Cargo Pants 10",
+      "price": 900000,
+      "series": "TS00010",
+      "size": "XL",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
+    },
+    {
+      "id": "8",
+      "name": "Candles Combat Cargo Pants 1",
+      "price": 900000,
+      "series": "TS0001",
+      "size": "XL",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
       "composition": "Cotton 100%"
     }
   ]

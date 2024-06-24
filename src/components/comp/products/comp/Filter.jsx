@@ -5,7 +5,6 @@ function Filter() {
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
-  // Hàm để toggle hiển thị dropdown
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -15,7 +14,6 @@ function Filter() {
   const toggleDropdown2 = () => {
     setIsOpen2(!isOpen2);
   };
-  // Đóng dropdown nếu click ra ngoài dropdown
   const handleOutsideClick = (event) => {
     if (!event.target.closest('.dropdown')) {
       setIsOpen(false);

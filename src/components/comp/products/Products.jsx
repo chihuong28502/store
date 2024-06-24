@@ -22,16 +22,13 @@ function Products() {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-  // Use products directly from Redux state instead of dataProducts
   const currentItems = products?.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleProductClick = (product) => {
-    console.log(product);
   };
 
-  // Render loading state if status is not "succeeded"
   if (status !== "succeeded") {
     return <Loading />;
   }

@@ -41,8 +41,8 @@ function ItemCart({ data }) {
       <div className="md:flex items-center mt-0 py-8 border-t border-gray-200">
         <div className="w-1/4">
           <img
-            src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller3.png"
-            alt=""
+            src={data?.imageSrc}
+            alt={data?.name}
             className="w-full h-full object-center object-cover"
           />
         </div>

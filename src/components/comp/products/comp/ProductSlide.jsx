@@ -1,23 +1,33 @@
 import { fetchProducts } from "@/redux/productsSlice";
 import slugify from "@/utils/formatSlug";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import Loading from "../../loading/Loading";
 import Product from "../product/Product";
 
 const ProductSlide = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
-  const status = useSelector((state) => state.products.status);
+  // const status = useSelector((state) => state.products.status);
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-  if (status !== "succeeded") {
-    return <Loading />;
-  }
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  useEffect(() => {
+    if (selectedProduct) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, selectedProduct]);
+
 
   const responsive = {
     desktop: {
@@ -33,6 +43,7 @@ const ProductSlide = () => {
       items: 1,
     },
   };
+
   return (
     <>
       <h2 className="text-center my-8 text-3xl font-medium">Sản phẩm tương tự</h2>
@@ -45,7 +56,11 @@ const ProductSlide = () => {
         itemClass="carousel-item"
       >
         {products?.map((item) => (
-          <Link key={item.id} to={`/products/product/${slugify(item.id)}`}>
+          <Link
+            key={item?.id}
+            to={`/products/product/${slugify(item?.id)}`}
+            onClick={() => handleProductClick(item)}
+          >
             <Product product={item} />
           </Link>
         ))}

@@ -28,10 +28,10 @@ export const updateCartQuantity = createAsyncThunk(
   "cart/updateCartQuantity",
   async ({ id, quantity }) => {
     try {
-      const response = await axios.patch(`${BaseURL}cart/${id.toString()}`, { quantity });
-      // Trả về id và quantity để dùng trong reducer
-
-      return response.data; // Giả sử dữ liệu trả về có { id, quantity }
+      const response = await axios.patch(`${BaseURL}cart/${id.toString()}`, {
+        quantity,
+      });
+      return response.data;
     } catch (error) {
       throw Error(error.response.data.message || error.message);
     }
@@ -95,9 +95,10 @@ const cartSlice = createSlice({
         state.status = "loading";
       })
       .addCase(deleteCartItem.fulfilled, (state, action) => {
-        // Xóa item khỏi state.data mà không thay đổi status
         const idToDelete = action.payload;
         state.data = state.data.filter((item) => item.id !== idToDelete);
+        localStorage.setItem("dataCart", JSON.stringify(state.data));
+
       })
       .addCase(deleteCartItem.rejected, (state, action) => {
         state.status = "failed";
@@ -106,6 +107,7 @@ const cartSlice = createSlice({
       .addCase(addCartItem.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data.push(action.payload);
+        localStorage.setItem("dataCart", JSON.stringify(state.data));
       });
   },
 });
