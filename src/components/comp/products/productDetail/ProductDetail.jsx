@@ -3,12 +3,21 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ProductSlide from "../comp/ProductSlide";
 import ProductPolicy from "./productPolicy/ProductPolicy";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import formatCurrency from "@/utils/formatMoney";
+import {
+  fetchCart,
+  addCartItem,
+  updateCartQuantity,
+} from "@/redux/cartSlice"; // Đường dẫn của slice cartSlice
 
 export default function ProductDetail() {
+  const dispatch = useDispatch();
   const status = useSelector((state) => state.products.status);
   const [userData, setUserData] = useState(null);
+  const cartData = useSelector((state) => state.cart.data);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState("S"); // State để lưu size được chọn
 
   useEffect(() => {
     const storedData = localStorage.getItem('dataDetail');
@@ -17,8 +26,9 @@ export default function ProductDetail() {
     }
   }, [status]);
 
-  const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("S");
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   const handleQuantityChange = (type) => {
     if (type === "increment") {
@@ -29,6 +39,39 @@ export default function ProductDetail() {
       }
     }
   };
+
+  const handleSizeSelect = (size) => {
+    setSelectedSize(size); // Cập nhật state selectedSize khi người dùng chọn size
+  };
+ 
+  console.log(userData);
+  const handleAddItemCart = () => {
+    // Thông tin sản phẩm mới cần thêm hoặc cập nhật
+    const product = {
+      id: userData?.id.toString(),
+      name: userData?.name,
+      price: userData?.price,
+      series: userData?.series,
+      size: selectedSize,
+      image: userData?.imageSrc,
+      quantity,
+      composition: userData?.composition,
+    };
+
+    const existingProductIndex = cartData.findIndex(
+      item => item.name === product.name && item.size === product.size
+    );
+    console.log(product);
+    if (existingProductIndex !== -1) {
+      // Nếu sản phẩm đã có trong giỏ hàng, cập nhật số lượng sản phẩm
+      const existingProduct = cartData[existingProductIndex];
+      dispatch(updateCartQuantity({ id: existingProduct.id, quantity: existingProduct.quantity + quantity }));
+    } else {
+      // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm mới vào giỏ hàng
+      dispatch(addCartItem({ ...product, id: (cartData.length).toString() }));
+    }
+  };
+
 
   const responsive = {
     desktop: {
@@ -45,9 +88,9 @@ export default function ProductDetail() {
     },
   };
 
-  // Check if userData and imageDetail are defined before rendering Carousel
+  // Kiểm tra nếu không có dữ liệu sản phẩm hoặc hình ảnh sản phẩm
   if (!userData || !userData?.imageDetail || userData?.imageDetail.length === 0) {
-    return null; // Or handle loading state or default content
+    return null; // Hoặc xử lý trạng thái loading hoặc hiển thị nội dung mặc định
   }
 
   return (
@@ -83,12 +126,12 @@ export default function ProductDetail() {
             <div className="">
               <p className="text-[1rem] text-[#5b5b5b]">Size</p>
               <div className="list-size mb-4 pb-3">
-                {["S", "M", "L", "XL"].map((size) => (
+                {["S", "M", "L", "XL"].map((size, index) => (
                   <button
-                    key={size}
+                    key={index}
                     className={`none-active ${selectedSize === size ? "bg-[#999]" : ""
                       } border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px]`}
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => handleSizeSelect(size)} // Xử lý sự kiện khi chọn size
                   >
                     {size}
                   </button>
@@ -118,7 +161,10 @@ export default function ProductDetail() {
                 </div>
               </div>
               <div className="w-full mb-5">
-                <button className="add-product w-full bg-black text-white py-4 text-lg font-medium hover:bg-[#888] hover:text-[#000]">
+                <button
+                  onClick={() => handleAddItemCart()}
+                  className="add-product w-full bg-black text-white py-4 text-lg font-medium hover:bg-[#888] hover:text-[#000]"
+                >
                   Add to cart
                 </button>
               </div>

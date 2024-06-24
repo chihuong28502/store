@@ -3,6 +3,7 @@ import LoginPage from "@/components/pages/auth/login/LoginPage";
 import Home from "@/components/pages/home/Home";
 import ProductsPage from "@/components/pages/products/ProductsPage";
 import ProductDetailPage from "@/components/pages/products/product/ProductDetailPage";
+import Cart from "@/components/comp/cart/Cart";
 // routes.js
 
 const listRouter = [
@@ -25,6 +26,10 @@ const listRouter = [
   {
     path: "/products/product/:slug",
     component: ProductDetailPage,
+  },
+  {
+    path: "/cart",
+    component: Cart,
   },
 ];
 export default listRouter;

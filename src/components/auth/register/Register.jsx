@@ -4,7 +4,7 @@ import iconGoogle from '../../../Images/svg/Google.svg'
 import { Link } from 'react-router-dom';
 function Register() {
   return (
-    <div className="block">
+    <div className="block mt-[5rem]">
       <div className="md:mt-5 p-5 flex flex-col-reverse lg:flex lg:flex-row lg:justify-between">
         <div className="flex-1 flex gap-2 flex-col lg:w-[60%] lg:px-[15vw] lg:h-[100%] lg:flex-none lg:justify-center">
           <div className="">

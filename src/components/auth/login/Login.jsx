@@ -4,7 +4,7 @@ import iconGoogle from '../../../Images/svg/Google.svg'
 import { Link } from 'react-router-dom';
 function Login() {
   return (
-    <div className="z-10 md:mt-5 p-5 flex flex-col-reverse lg:flex lg:flex-row lg:justify-between">
+    <div className="z-10  p-5 flex flex-col-reverse lg:flex lg:flex-row lg:justify-between mt-[5rem]">
       <div className="flex-1 flex gap-2 flex-col lg:w-[60%] lg:px-[15vw] lg:h-[100%] lg:flex-none lg:justify-center">
         <div className="">
           <h1 className="text-2xl font-bold py-3">Welcome Back 👋</h1>
