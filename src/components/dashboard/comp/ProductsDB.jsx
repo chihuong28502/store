@@ -1,16 +1,28 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import ModalEditProductsDB from '../modal/ModalEditProductsDB';
 import formatCurrency from '@/utils/formatMoney';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setDataProductDB } from '@/redux/productsSlice';
 
+// eslint-disable-next-line react/prop-types
 function ProductsDB({ data }) {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState(data);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editedProduct, setEditedProduct] = useState(null);
+  const [editedProduct, setEditedProduct] = useState({
+    series: '',
+    name: '',
+    price: '',
+    sizes: [], // Thêm trường sizes để lưu danh sách các size
+    composition: '',
+    imageSrc: '',
+    logo: '',
+  });
 
   const handleDelete = (index) => {
-    if (window.confirm('Bạn có muốn xóa sản phẩm đang đăng bán này không?')) {
+    if (window.confirm('Bạn có muốn xóa sản phẩm này không?')) {
       const newProducts = products.filter((_, i) => i !== index);
       setProducts(newProducts);
     }
@@ -31,12 +43,14 @@ function ProductsDB({ data }) {
 
   const handleEditSubmit = () => {
     const newProducts = products.map((product) =>
-      product?.series === editedProduct?.series ? editedProduct : product
+      product.series === editedProduct.series ? editedProduct : product
     );
     setProducts(newProducts);
     setIsModalOpen(false);
   };
-
+  const handleClickProductDB = (product) => {
+    dispatch(setDataProductDB(product));
+  }
   return (
     <>
       <div className="w-full h-screen overflow-x-hidden border-t flex flex-col">
@@ -82,14 +96,21 @@ function ProductsDB({ data }) {
                             </td>
                             <td className={`p-2 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <span className="text-xs font-semibold">
-                                {/* {product?.size}  */}
-                                M
+                                {
+                                  product.sizes.reduce((accumulator, size) => accumulator + size.quantity, 0)}
                               </span>
                             </td>
                             <td className={`p-2 text-center bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <span className="mr-2 text-xs font-semibold">{product?.composition}</span>
                             </td>
                             <td className={`p-2 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
+                              <Link
+                                to={`/dashboard/product/${product?.series}`}
+                                onClick={() => handleClickProductDB(product)}
+                                className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
+                              >
+                                XEM
+                              </Link>
                               <button
                                 onClick={() => handleEditClick(product)}
                                 className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
@@ -114,7 +135,7 @@ function ProductsDB({ data }) {
           </div>
         </div>
         <footer className="w-full bg-white text-right p-4">
-          Built by{" "}
+          Built by{' '}
           <a target="_blank" href="https://davidgrzyb.com" className="underline">
             David Grzyb
           </a>

@@ -1,5 +1,6 @@
 import Dashboard from "@/components/dashboard/Dashboard";
 import CalendarDBPage from "@/components/dashboard/comp/page/CalendarDBPage";
+import ProductDetailDBPage from "@/components/dashboard/comp/page/ProductDetailDBPage";
 import ProductsDBPage from "@/components/dashboard/comp/page/ProductsDBPage";
 import TabsDBPage from "@/components/dashboard/comp/page/TabsDBPage";
 import LoginPage from "@/components/pages/auth/login/LoginPage";
@@ -50,6 +51,10 @@ const listRouter = [
   {
     path: "/dashboard/calendar",
     component: CalendarDBPage,
+  },
+  {
+    path: "/dashboard/product/:slug",
+    component: ProductDetailDBPage,
   },
 ];
 export default listRouter;

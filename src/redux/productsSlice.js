@@ -19,10 +19,15 @@ const productsSlice = createSlice({
     valueSearch: "",
     dataSearch: [],
     dataFilter: [],
+    dataCheckDB: null,
     status: "idle",
     error: null,
   },
   reducers: {
+    setDataProductDB: (state, action) => {
+      localStorage.setItem("Data-Product-DB", JSON.stringify(action.payload));
+      state.dataDetail = action.payload;
+    },
     setDataDetail: (state, action) => {
       localStorage.setItem("dataDetail", JSON.stringify(action.payload));
       state.dataDetail = action.payload;
@@ -52,6 +57,6 @@ const productsSlice = createSlice({
       });
   },
 });
-export const { setDataDetail, setValueSearch, setDataSearch, setDataFilter } =
+export const { setDataProductDB,setDataDetail, setValueSearch, setDataSearch, setDataFilter } =
   productsSlice.actions;
 export default productsSlice.reducer;

@@ -12,8 +12,8 @@ import ProductPolicy from "./productPolicy/ProductPolicy";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.products.status);
   const [userData, setUserData] = useState(null);
+  const status = useSelector((state) => state.products.status);
   const cartData = useSelector((state) => state.cart.data);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("S");
@@ -79,6 +79,17 @@ export default function ProductDetail() {
     return null;
   }
 
+
+
+  const getSizeOpacity = (size) => {
+    const selectedSizeObj = userData.sizes.find(item => item.size === size);
+
+    if (selectedSizeObj && selectedSizeObj.quantity > 0) {
+      return ""; // Size có số lượng lớn hơn 0
+    } else {
+      return "opacity-30 cursor-not-allowed"; // Size có số lượng nhỏ hơn hoặc bằng 0
+    }
+  };
   return (
     <>
       <div className="container w-3/4 xl:flex mx-auto my-10 pt-[64px]">
@@ -115,9 +126,9 @@ export default function ProductDetail() {
                 {["S", "M", "L", "XL"].map((size, index) => (
                   <button
                     key={index}
-                    className={`none-active ${selectedSize === size ? "bg-[#999]" : ""
-                      } border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px]`}
-                    onClick={() => handleSizeSelect(size)} >
+                    className={`none-active ${selectedSize === size ? "bg-[#999]" : ""} border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px] ${getSizeOpacity(size)}`}
+                    onClick={() => handleSizeSelect(size)}
+                  >
                     {size}
                   </button>
                 ))}

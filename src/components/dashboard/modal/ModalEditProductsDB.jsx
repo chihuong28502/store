@@ -25,7 +25,7 @@ function ModalEditProductsDB({ isOpen, onRequestClose, editedProduct, handleEdit
             <input
               type="text"
               name="series"
-              value={editedProduct.series}
+              value={editedProduct?.series}
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
@@ -35,7 +35,7 @@ function ModalEditProductsDB({ isOpen, onRequestClose, editedProduct, handleEdit
             <input
               type="text"
               name="name"
-              value={editedProduct.name}
+              value={editedProduct?.name}
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
@@ -45,27 +45,18 @@ function ModalEditProductsDB({ isOpen, onRequestClose, editedProduct, handleEdit
             <input
               type="text"
               name="budget"
-              value={editedProduct.budget}
+              value={editedProduct?.price}
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
           </label>
-          <label className="block mb-2">
-            Size:
-            <input
-              type="text"
-              name="status"
-              value={editedProduct.status}
-              onChange={handleEditChange}
-              className="w-full mt-1 p-2 border rounded"
-            />
-          </label>
+          
           <label className="block mb-2">
             Chất liệu:
             <input
               type="text"
-              name="completion"
-              value={editedProduct.completion}
+              name="composition"
+              value={editedProduct?.composition}
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
@@ -74,14 +65,14 @@ function ModalEditProductsDB({ isOpen, onRequestClose, editedProduct, handleEdit
             Logo URL:
             <input
               type="text"
-              name="logo"
-              value={editedProduct.logo}
+              name="imageSrc"
+              value={editedProduct?.imageSrc}
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
           </label>
           <div className="">
-            <img src={editedProduct.logo} alt="" />
+            <img src={editedProduct?.imageSrc} alt={editedProduct?.name} />
           </div>
           <div className="flex justify-end mt-4">
             <button type="submit" className="px-4 py-2 mr-2 bg-blue-500 text-white rounded">
