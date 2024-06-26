@@ -1,8 +1,8 @@
-import CalendarDB from '../CaledarDB'
+import CalendarDB from '../CalendarDB'
 import Header from '../HeaderDB'
 import NavigationDB from '../NavigationDB'
 
-function ProductsDBPage() {
+function CalendarDBPage() {
   return (
     <div>
       <div className="flex h-screen bg-gray-100">
@@ -16,4 +16,4 @@ function ProductsDBPage() {
   )
 }
 
-export default ProductsDBPage
+export default CalendarDBPage

@@ -14,12 +14,12 @@ const Header = () => {
             className="relative z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none"
           >
             <img
-              src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400"
+              src="https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg"
               alt="Profile"
             />
           </button>
           {isMobileNavOpen && (
-            <div className="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+            <div className="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16 z-10">
               <a href="#" className="text-black block px-4 py-2 account-link hover:text-white">Account</a>
               <a href="#" className="text-black block px-4 py-2 account-link hover:text-white">Support</a>
               <a href="#" className="text-black block px-4 py-2 account-link hover:text-white">Sign Out</a>

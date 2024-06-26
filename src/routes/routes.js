@@ -1,5 +1,5 @@
 import Dashboard from "@/components/dashboard/Dashboard";
-import CalendarDB from "@/components/dashboard/comp/CaledarDB";
+import CalendarDBPage from "@/components/dashboard/comp/page/CalendarDBPage";
 import ProductsDBPage from "@/components/dashboard/comp/page/ProductsDBPage";
 import TabsDBPage from "@/components/dashboard/comp/page/TabsDBPage";
 import LoginPage from "@/components/pages/auth/login/LoginPage";
@@ -49,7 +49,7 @@ const listRouter = [
   },
   {
     path: "/dashboard/calendar",
-    component: CalendarDB,
+    component: CalendarDBPage,
   },
 ];
 export default listRouter;
