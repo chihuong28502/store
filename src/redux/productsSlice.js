@@ -121,7 +121,6 @@ const productsSlice = createSlice({
       })
       .addCase(updateProductSizes.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Update the product in the state data array with new sizes and quantitySize
         localStorage.setItem("Data-Product-DB", JSON.stringify(action.payload));
 
         state.data = state.data.map((product) =>
@@ -136,6 +135,7 @@ const productsSlice = createSlice({
         state.status = "loading";
       })
       .addCase(deleteDBItem.fulfilled, (state, action) => {
+        state.status = "succeeded";
         const idToDelete = action.payload;
         state.data = state.data.filter((item) => item.id !== idToDelete);
         localStorage.setItem("products", JSON.stringify(state.data));
