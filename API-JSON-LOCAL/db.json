@@ -385,7 +385,7 @@
       "series": "TS0002",
       "size": "S",
       "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
-      "quantity": 1,
+      "quantity": 2,
       "composition": "vip"
     },
     {
@@ -397,6 +397,16 @@
       "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
       "quantity": 3,
       "composition": "vip"
+    },
+    {
+      "id": "3",
+      "name": "Candles Combat Cargo Pants 5",
+      "price": 900000,
+      "series": "TS0005",
+      "size": "L",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
     }
   ]
 }
