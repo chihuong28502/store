@@ -50,7 +50,7 @@ function ModalEditProductsDB({ isOpen, onRequestClose, editedProduct, handleEdit
               className="w-full mt-1 p-2 border rounded"
             />
           </label>
-          
+
           <label className="block mb-2">
             Chất liệu:
             <input

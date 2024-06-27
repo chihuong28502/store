@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { BaseURL } from "@/utils/http";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // Async thunk để lấy dữ liệu giỏ hàng
 export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {

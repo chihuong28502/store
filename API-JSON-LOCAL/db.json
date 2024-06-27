@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "Candles Combat Cargo Pants 1",
-      "price": 900000,
+      "price": 90000,
       "composition": "Cotton 100%",
       "series": "TS0001",
       "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
@@ -17,14 +17,18 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 0
+          "quantity": 1215
         },
         {
           "size": "M",
-          "quantity": 15
+          "quantity": 1534
         },
         {
           "size": "L",
+          "quantity": 20
+        },
+        {
+          "size": "XL",
           "quantity": 20
         }
       ],
@@ -38,7 +42,7 @@
       "id": "2",
       "name": "Candles Combat Cargo Pants 2",
       "price": 900000,
-      "composition": "Cotton 100%",
+      "composition": "vip",
       "series": "TS0002",
       "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
       "imageDetail": [
@@ -51,7 +55,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -85,7 +89,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 1
         },
         {
           "size": "M",
@@ -94,6 +98,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -119,7 +127,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -128,6 +136,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -153,7 +165,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -162,6 +174,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -187,7 +203,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -196,6 +212,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -221,7 +241,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -230,6 +250,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -255,7 +279,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -264,6 +288,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -289,7 +317,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -298,6 +326,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -323,7 +355,7 @@
       "sizes": [
         {
           "size": "S",
-          "quantity": 10
+          "quantity": 0
         },
         {
           "size": "M",
@@ -332,6 +364,10 @@
         {
           "size": "L",
           "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
         }
       ],
       "tags": [
@@ -341,5 +377,16 @@
       ]
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "1",
+      "name": "Candles Combat Cargo Pants 1",
+      "price": 90000,
+      "series": "TS0001",
+      "size": "XL",
+      "imageSrc": "https://pos.nvncdn.com/b3bf61-16762/ps/20230612_dtf3BPVkbx.jpeg",
+      "quantity": 1,
+      "composition": "Cotton 100%"
+    }
+  ]
 }

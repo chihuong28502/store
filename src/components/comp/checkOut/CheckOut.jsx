@@ -21,7 +21,7 @@ const CheckoutForm = () => {
                 <div className="space-y-4">
                   {cart?.map((item) => (
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4" key={item?.id}>
                       <div className="w-32 h-28 max-lg:w-24 max-lg:h-24 flex p-3 shrink-0 bg-gray-300 rounded-md">
                         <img
                           src={item?.imageSrc}
@@ -51,7 +51,7 @@ const CheckoutForm = () => {
               <div className="md:absolute md:left-0 md:bottom-0 bg-gray-800 w-full p-4">
                 <h4 className="flex flex-wrap gap-4 text-base text-white">
                   Total <span className="ml-auto">{
-                    formatCurrency(cart?.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 1.08)
+                    formatCurrency(cart?.reduce((sum, item) => sum + (item?.price * item?.quantity), 0) * 1.08)
                   }</span>
                 </h4>
               </div>

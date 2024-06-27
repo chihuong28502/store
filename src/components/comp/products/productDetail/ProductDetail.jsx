@@ -17,6 +17,7 @@ export default function ProductDetail() {
   const cartData = useSelector((state) => state.cart.data);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("S");
+
   useEffect(() => {
     const storedData = localStorage.getItem('dataDetail');
     if (storedData) {
@@ -51,15 +52,16 @@ export default function ProductDetail() {
     };
 
     const existingProductIndex = cartData.findIndex(
-      item => item.name === product.name && item.size === product.size
+      item => item?.name === product?.name && item?.size === product?.size
     );
     if (existingProductIndex !== -1) {
       const existingProduct = cartData[existingProductIndex];
-      dispatch(updateCartQuantity({ id: existingProduct.id, quantity: existingProduct.quantity + quantity }));
+      dispatch(updateCartQuantity({ id: existingProduct?.id, quantity: existingProduct?.quantity + quantity }));
     } else {
       dispatch(addCartItem({ ...product, id: (cartData.length + 1).toString() }));
     }
   };
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -75,21 +77,43 @@ export default function ProductDetail() {
     },
   };
 
-  if (!userData || !userData?.imageDetail || userData?.imageDetail.length === 0) {
+  if (!userData || !userData?.imageDetail || userData?.imageDetail?.length === 0) {
     return null;
   }
 
-
-
   const getSizeOpacity = (size) => {
     const selectedSizeObj = userData.sizes.find(item => item.size === size);
-
     if (selectedSizeObj && selectedSizeObj.quantity > 0) {
-      return ""; // Size có số lượng lớn hơn 0
+      return "";
     } else {
-      return "opacity-30 cursor-not-allowed"; // Size có số lượng nhỏ hơn hoặc bằng 0
+      return "opacity-30 cursor-not-allowed !bg-[#999] text-white";
     }
   };
+
+  const renderCrossLines = (size) => {
+    const selectedSizeObj = userData.sizes.find(item => item.size === size);
+    console.log(selectedSizeObj);
+    if ((selectedSizeObj && !(selectedSizeObj?.quantity > 0))) {
+      return (
+        <>
+          <span className="absolute inset-0 flex items-center justify-center text-[#000] before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-[#000] before:rotate-[-45deg] before:left-0 before:top-1/2 before:transform before:translate-y-[-50%]"></span>
+          <span className="absolute inset-0 flex items-center justify-center text-[#000] before:content-[''] before:absolute before:w-full before:h-[2px] before:bg-[#000] before:rotate-[-135deg] before:left-0 before:top-1/2 before:transform before:translate-y-[-50%]"></span>
+        </>
+      )
+    } else {
+      return null;
+    }
+  };
+
+  const getSelectedSizeObj = () => {
+    return userData.sizes.find(item => item.size === selectedSize);
+  };
+
+  const isAddToCartDisabled = () => {
+    const selectedSizeObj = getSelectedSizeObj();
+    return selectedSizeObj?.quantity === 0;
+  };
+
   return (
     <>
       <div className="container w-3/4 xl:flex mx-auto my-10 pt-[64px]">
@@ -126,10 +150,11 @@ export default function ProductDetail() {
                 {["S", "M", "L", "XL"].map((size, index) => (
                   <button
                     key={index}
-                    className={`none-active ${selectedSize === size ? "bg-[#999]" : ""} border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px] ${getSizeOpacity(size)}`}
+                    className={`relative none-active ${selectedSize === size ? "bg-[#000] text-white" : ""} border border-[#ccc] mr-2 font-bold text-[1rem] w-[30px] h-[30px] ${getSizeOpacity(size)}`}
                     onClick={() => handleSizeSelect(size)}
                   >
                     {size}
+                    {renderCrossLines(size)}
                   </button>
                 ))}
               </div>
@@ -159,7 +184,8 @@ export default function ProductDetail() {
               <div className="w-full mb-5">
                 <button
                   onClick={() => handleAddItemCart()}
-                  className="add-product w-full bg-black text-white py-4 text-lg font-medium hover:bg-[#888] hover:text-[#000]"
+                  className={`add-product w-full bg-black text-white py-4 text-lg font-medium hover:bg-[#888] hover:text-[#000] ${isAddToCartDisabled() ? "opacity-30 cursor-not-allowed" : ""}`}
+                  disabled={isAddToCartDisabled()}
                 >
                   Add to cart
                 </button>

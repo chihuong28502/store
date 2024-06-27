@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
+import { fetchProducts } from "@/redux/productsSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "@/redux/productsSlice";
 import Loading from "../loading/Loading"; // Import component Loading
 import Pagination from "../pagination/Pagination";
 import Filter from "./comp/Filter";

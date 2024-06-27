@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import ModalEditProductsDB from '../modal/ModalEditProductsDB';
+import { setDataProductDB, updateProduct } from '@/redux/productsSlice';
 import formatCurrency from '@/utils/formatMoney';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setDataProductDB } from '@/redux/productsSlice';
+import ModalEditProductsDB from '../modal/ModalEditProductsDB';
 
 // eslint-disable-next-line react/prop-types
 function ProductsDB({ data }) {
   const dispatch = useDispatch();
+  const productsData = useSelector((state) => state.products.data);
   const [products, setProducts] = useState(data);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedProduct, setEditedProduct] = useState({
     series: '',
     name: '',
-    price: '',
-    sizes: [], // Thêm trường sizes để lưu danh sách các size
+    price: 0,
+    sizes: [],
     composition: '',
     imageSrc: '',
     logo: '',
@@ -37,20 +38,29 @@ function ProductsDB({ data }) {
     const { name, value } = e.target;
     setEditedProduct((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: name === 'price' ? Number(value) : value,
     }));
   };
 
-  const handleEditSubmit = () => {
-    const newProducts = products.map((product) =>
-      product.series === editedProduct.series ? editedProduct : product
-    );
-    setProducts(newProducts);
-    setIsModalOpen(false);
+  const handleEditSubmit = async () => {
+    try {
+      await dispatch(updateProduct(editedProduct));
+      setIsModalOpen(false); // Close modal on successful update
+    } catch (error) {
+      console.error('Error updating product:', error);
+    }
+    //   const newProducts = products.map((product) =>
+    //     product?.series === editedProduct?.series ? editedProduct : product
+    //   );
+    //   setProducts(newProducts);
+    //   setIsModalOpen(false);
+    // };
+
   };
   const handleClickProductDB = (product) => {
-    dispatch(setDataProductDB(product));
+    dispatch(setDataProductDB(product))
   }
+
   return (
     <>
       <div className="w-full h-screen overflow-x-hidden border-t flex flex-col">
@@ -80,10 +90,10 @@ function ProductsDB({ data }) {
                       <tbody>
                         {products.map((product, index) => (
                           <tr key={index}>
-                            <td className={`px-6 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
+                            <td className={`px-6 bg-transparent ${index !== product?.sizes?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <p className="mb-0 text-sm font-semibold">{product?.series}</p>
                             </td>
-                            <td className={`p-2 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
+                            <td className={`p-2 bg-transparent ${index !== product?.sizes?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <div className="flex px-2">
                                 <img src={product?.imageSrc} className="inline-flex items-center justify-center mr-2 h-9 w-9" alt={product?.name} />
                                 <div className="my-auto">
@@ -91,16 +101,15 @@ function ProductsDB({ data }) {
                                 </div>
                               </div>
                             </td>
-                            <td className={`p-2 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
+                            <td className={`p-2 bg-transparent ${index !== product?.sizes?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <p className="mb-0 text-sm font-semibold">{formatCurrency(product?.price)}</p>
                             </td>
-                            <td className={`p-2 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
+                            <td className={`p-2 bg-transparent ${index !== product?.sizes?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <span className="text-xs font-semibold">
-                                {
-                                  product.sizes.reduce((accumulator, size) => accumulator + size.quantity, 0)}
+                                {product?.sizes?.reduce((accumulator, size) => accumulator + size?.quantity, 0)}
                               </span>
                             </td>
-                            <td className={`p-2 text-center bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
+                            <td className={`p-2 text-center bg-transparent ${index !== product?.sizes?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <span className="mr-2 text-xs font-semibold">{product?.composition}</span>
                             </td>
                             <td className={`p-2 bg-transparent ${index !== products?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
@@ -135,9 +144,9 @@ function ProductsDB({ data }) {
           </div>
         </div>
         <footer className="w-full bg-white text-right p-4">
-          Built by{' '}
-          <a target="_blank" href="https://davidgrzyb.com" className="underline">
-            David Grzyb
+          Built by
+          <a className="underline mx-2">
+            Madara02xz
           </a>
         </footer>
       </div>
@@ -153,4 +162,4 @@ function ProductsDB({ data }) {
   );
 }
 
-export default ProductsDB;
+export default ProductsDB
