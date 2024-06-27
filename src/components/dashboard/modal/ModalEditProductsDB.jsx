@@ -44,13 +44,12 @@ function ModalEditProductsDB({ isOpen, onRequestClose, editedProduct, handleEdit
             Price:
             <input
               type="text"
-              name="budget"
+              name="price"
               value={editedProduct?.price}
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
           </label>
-
           <label className="block mb-2">
             Chất liệu:
             <input

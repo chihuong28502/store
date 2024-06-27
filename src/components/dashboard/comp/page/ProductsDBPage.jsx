@@ -1,4 +1,3 @@
-import Loading from '@/components/comp/loading/Loading';
 import { fetchProducts } from '@/redux/productsSlice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,14 +8,11 @@ import ProductsDB from '../ProductsDB';
 function ProductsDBPage() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
-  const status = useSelector((state) => state.products.status);
+  // const status = useSelector((state) => state.products.status);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch,]);
-  if (status !== "succeeded") {
-    return <Loading />;
-  }
+  }, [dispatch])
   return (
     <div>
       <div className="flex h-screen bg-gray-100">

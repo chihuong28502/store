@@ -35,17 +35,24 @@ export const updateProductSizes = createAsyncThunk(
   "products/updateProductSizes",
   async ({ id, sizes }) => {
     try {
-      const response = await axios.patch(
-        `${BaseURL}products/${id}`,
-        { sizes }
-      );
+      const response = await axios.patch(`${BaseURL}products/${id}`, { sizes });
       return response.data; // Return the updated product with sizes and quantitySize
     } catch (error) {
       throw Error(error.response.data.message); // Throw an error with the message from the server response
     }
   }
 );
-
+export const deleteDBItem = createAsyncThunk(
+  "cart/deleteDBItem",
+  async (id) => {
+    try {
+      await axios.delete(`${BaseURL}products/${id}`);
+      return id;
+    } catch (error) {
+      throw Error(error.response.data.message || error.message);
+    }
+  }
+);
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -115,8 +122,8 @@ const productsSlice = createSlice({
       .addCase(updateProductSizes.fulfilled, (state, action) => {
         state.status = "succeeded";
         // Update the product in the state data array with new sizes and quantitySize
-      localStorage.setItem("Data-Product-DB", JSON.stringify(action.payload));
-        
+        localStorage.setItem("Data-Product-DB", JSON.stringify(action.payload));
+
         state.data = state.data.map((product) =>
           product.id === action.payload.id ? action.payload : product
         );
@@ -124,6 +131,18 @@ const productsSlice = createSlice({
       .addCase(updateProductSizes.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message ?? "Failed to update product sizes.";
+      })
+      .addCase(deleteDBItem.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteDBItem.fulfilled, (state, action) => {
+        const idToDelete = action.payload;
+        state.data = state.data.filter((item) => item.id !== idToDelete);
+        localStorage.setItem("products", JSON.stringify(state.data));
+      })
+      .addCase(deleteDBItem.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       });
   },
 });

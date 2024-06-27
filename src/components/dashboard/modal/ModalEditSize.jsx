@@ -47,7 +47,7 @@ function ModalEditSize({ data, isOpen, onRequestClose, editedProduct, handleEdit
             <input
               type="text"
               name="size"
-              value={editedProduct?.size || ''}
+              value={editedProduct?.size }
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />
@@ -57,7 +57,7 @@ function ModalEditSize({ data, isOpen, onRequestClose, editedProduct, handleEdit
             <input
               type="text"
               name="quantity"
-              value={editedProduct?.quantity || ''}
+              value={editedProduct?.quantity }
               onChange={handleEditChange}
               className="w-full mt-1 p-2 border rounded"
             />

@@ -1,16 +1,16 @@
-import { setDataProductDB, updateProduct } from '@/redux/productsSlice';
+/* eslint-disable react/prop-types */
+import { deleteDBItem, setDataProductDB, updateProduct } from '@/redux/productsSlice';
 import formatCurrency from '@/utils/formatMoney';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import ModalEditProductsDB from '../modal/ModalEditProductsDB';
 
-// eslint-disable-next-line react/prop-types
 function ProductsDB({ data }) {
   const dispatch = useDispatch();
-  const productsData = useSelector((state) => state.products.data);
-  const [products, setProducts] = useState(data);
-
+  const dataDispatch = useSelector((state) => state.products.data);
+  const [products, setProducts] = useState(dataDispatch);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedProduct, setEditedProduct] = useState({
     series: '',
@@ -22,10 +22,20 @@ function ProductsDB({ data }) {
     logo: '',
   });
 
-  const handleDelete = (index) => {
+  useEffect(() => {
+    setProducts(data)
+  }, [data]);
+
+  const handleDelete = async (product) => {
     if (window.confirm('Bạn có muốn xóa sản phẩm này không?')) {
-      const newProducts = products.filter((_, i) => i !== index);
-      setProducts(newProducts);
+      try {
+        await dispatch(deleteDBItem(product?.id));
+        toast.success(`Xóa thành công sản phẩm ${product?.name}`)
+      } catch (error) {
+        // console.error('Error deleting product:', error);
+        toast.error(`Xóa khoonh thành công sản phẩm ${product?.name}`)
+
+      }
     }
   };
 
@@ -33,33 +43,34 @@ function ProductsDB({ data }) {
     setEditedProduct({ ...product });
     setIsModalOpen(true);
   };
-
+  console.log(editedProduct);
   const handleEditChange = (e) => {
     const { name, value } = e.target;
     setEditedProduct((prev) => ({
       ...prev,
-      [name]: name === 'price' ? Number(value) : value,
+      [name]: name === 'price' ? parseFloat(value) : value,
     }));
   };
+
 
   const handleEditSubmit = async () => {
     try {
       await dispatch(updateProduct(editedProduct));
-      setIsModalOpen(false); // Close modal on successful update
+      setIsModalOpen(false);
+      toast.success(`Sửa thành công sản phẩm`)
+
     } catch (error) {
-      console.error('Error updating product:', error);
+      // console.error('Error updating product:', error);
+      toast.error(`Sửa không thành công sản phẩm`)
+
     }
-    //   const newProducts = products.map((product) =>
-    //     product?.series === editedProduct?.series ? editedProduct : product
-    //   );
-    //   setProducts(newProducts);
-    //   setIsModalOpen(false);
-    // };
+  };
+
+  const handleClickProductDB = async (product) => {
+    await dispatch(setDataProductDB(product));
+    // bấm xem để check all size
 
   };
-  const handleClickProductDB = (product) => {
-    dispatch(setDataProductDB(product))
-  }
 
   return (
     <>
@@ -88,7 +99,7 @@ function ProductsDB({ data }) {
                         </tr>
                       </thead>
                       <tbody>
-                        {products.map((product, index) => (
+                        {products?.map((product, index) => (
                           <tr key={index}>
                             <td className={`px-6 bg-transparent ${index !== product?.sizes?.length - 1 ? 'border-b' : ''} shadow-transparent`}>
                               <p className="mb-0 text-sm font-semibold">{product?.series}</p>
@@ -127,7 +138,7 @@ function ProductsDB({ data }) {
                                 Edit
                               </button>
                               <button
-                                onClick={() => handleDelete(index)}
+                                onClick={() => handleDelete(product)}
                                 className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
                               >
                                 Xóa
@@ -162,4 +173,4 @@ function ProductsDB({ data }) {
   );
 }
 
-export default ProductsDB
+export default ProductsDB;

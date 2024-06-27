@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -33,7 +34,7 @@ function ProductDetailDB() {
     const { name, value } = e.target;
     setEditedProduct((prev) => ({
       ...prev,
-      [name]: name === 'quantity' ? Number(value) : value, // Ensure quantity is parsed as number
+      [name]: name === 'quantity' ? Number(value) : value,
     }));
   };
 
@@ -75,10 +76,10 @@ function ProductDetailDB() {
         <tbody>
           {data.sizes.map((size, index) => (
             <tr key={index}>
-              <td className={`px-6 bg-transparent shadow-transparent`}>
+              <td className="px-6 bg-transparent shadow-transparent">
                 <p className="mb-0 text-sm font-semibold">{data.series}</p>
               </td>
-              <td className={`p-2 bg-transparent shadow-transparent`}>
+              <td className="p-2 bg-transparent shadow-transparent">
                 <div className="flex px-2">
                   <img src={data.imageSrc} className="inline-flex items-center justify-center mr-2 h-9 w-9" alt={data.name} />
                   <div className="my-auto">
@@ -86,35 +87,39 @@ function ProductDetailDB() {
                   </div>
                 </div>
               </td>
-              <td className={`p-2 bg-transparent shadow-transparent`}>
+              <td className="p-2 bg-transparent shadow-transparent">
                 <p className="mb-0 text-sm font-semibold">{formatCurrency(data.price)}</p>
               </td>
-              <td className={`p-2 bg-transparent shadow-transparent`}>
+              <td className="p-2 bg-transparent shadow-transparent">
                 <div key={size.size}>
                   <span className="text-xs font-semibold">{size.size}: {size.quantity}</span>
                 </div>
               </td>
-              <td className={`p-2 text-center bg-transparent shadow-transparent`}>
+              <td className="p-2 text-center bg-transparent shadow-transparent">
                 <span className="text-xs font-semibold">{data.composition}</span>
               </td>
-              <td className={`p-2 bg-transparent shadow-transparent`}>
-                <Link
-                  to={`/dashboard/product/${data.series}`}
-                  className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
-                >
-                  XEM
-                </Link>
-                <button
-                  onClick={() => handleEditSize(index)}
-                  className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
-                >
-                  Edit
-                </button>
-                <button
-                  className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
-                >
-                  Xóa
-                </button>
+              <td className="p-2 bg-transparent shadow-transparent">
+                {!isModalOpen && (
+                  <>
+                    {/* <Link
+                      to={`/dashboard/product/${data.series}`}
+                      className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
+                    >
+                      XEM 
+                    </Link>*/}
+                    <button
+                      onClick={() => handleEditSize(index)}
+                      className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
+                    >
+                      Edit
+                    </button>
+                    {/* <button
+                      className="px-6 py-3 mb-0 text-xs font-bold text-center uppercase bg-transparent border-0 rounded-lg text-slate-400"
+                    >
+                      Xóa
+                    </button> */}
+                  </>
+                )}
               </td>
             </tr>
           ))}
@@ -129,6 +134,7 @@ function ProductDetailDB() {
         editedProduct={editedProduct}
         handleEditChange={handleEditChange}
         handleEditSubmit={handleEditSubmit}
+        isInModal={true} // Pass the isInModal prop
       />
     </>
   );

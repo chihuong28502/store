@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -50,34 +51,18 @@ const Header = () => {
             <i className="fas fa-tachometer-alt mr-3"></i>
             Dashboard
           </a>
-          <a href="blank.html" className={`text-black flex items-center ${openTab === 1 ? 'active-nav-link' : 'text-dark opacity-75 hover:opacity-100'} py-2 pl-4 nav-item`} onClick={() => setOpenTab(1)}>
+          <Link to={`/dashboard/products`} href="blank.html" className={`text-black flex items-center ${openTab === 1 ? 'active-nav-link' : 'text-dark opacity-75 hover:opacity-100'} py-2 pl-4 nav-item`} onClick={() => setOpenTab(1)}>
             <i className="fas fa-sticky-note mr-3"></i>
-            Blank Page
-          </a>
+            Products
+          </Link>
           <a href="tables.html" className={`text-black flex items-center ${openTab === 2 ? 'active-nav-link' : 'text-dark opacity-75 hover:opacity-100'} py-2 pl-4 nav-item`} onClick={() => setOpenTab(2)}>
             <i className="fas fa-table mr-3"></i>
             Tables
           </a>
-          <a href="forms.html" className={`text-black flex items-center ${openTab === 3 ? 'active-nav-link' : 'text-dark opacity-75 hover:opacity-100'} py-2 pl-4 nav-item`} onClick={() => setOpenTab(3)}>
-            <i className="fas fa-align-left mr-3"></i>
-            Forms
-          </a>
-          <a href="tabs.html" className={`text-black flex items-center ${openTab === 4 ? 'active-nav-link' : 'text-dark opacity-75 hover:opacity-100'} py-2 pl-4 nav-item`} onClick={() => setOpenTab(4)}>
-            <i className="fas fa-tablet-alt mr-3"></i>
-            Tabbed Content
-          </a>
-          <a href="calendar.html" className="flex items-center text-black opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+          <Link to={`/dashboard/calendar`} href="calendar.html" className="flex items-center text-black opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i className="fas fa-calendar mr-3"></i>
             Calendar
-          </a>
-          <a href="#" className="flex items-center text-black opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i className="fas fa-cogs mr-3"></i>
-            Support
-          </a>
-          <a href="#" className="flex items-center text-black opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i className="fas fa-user mr-3"></i>
-            My Account
-          </a>
+          </Link>
           <a href="#" className="flex items-center text-black opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i className="fas fa-sign-out-alt mr-3"></i>
             Sign Out
