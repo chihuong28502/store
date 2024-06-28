@@ -9,6 +9,7 @@ import CheckOutPage from "@/components/pages/checkout/CheckOutPage";
 import Home from "@/components/pages/home/Home";
 import ProductsPage from "@/components/pages/products/ProductsPage";
 import ProductDetailPage from "@/components/pages/products/product/ProductDetailPage";
+import SearchListPage from "@/components/pages/search/SearchListPage";
 // routes.js
 
 const listRouter = [
@@ -55,6 +56,10 @@ const listRouter = [
   {
     path: "/dashboard/product/:slug",
     component: ProductDetailDBPage,
+  },
+  {
+    path: "/search/:slug",
+    component: SearchListPage,
   },
 ];
 export default listRouter;

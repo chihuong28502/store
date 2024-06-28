@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from 'react';
 import { Carousel } from 'flowbite';
 import dataSlider from '../../../data/dataSlider';
@@ -70,8 +71,8 @@ function Slider() {
   }, [dataSlider]);
 
   return (
-    <div id="default-carousel" className="relative w-full pt-[64px]" data-carousel="slide" ref={carouselRef}>
-      <div className="relative h-56 overflow-hidden md:h-[40rem]">
+    <div id="default-carousel" className="relative w-full pt-[32px]" data-carousel="slide" ref={carouselRef}>
+      <div className="relative h-56 overflow-hidden md:h-[90rem]">
         {dataSlider.map((item, index) => (
           <div
             className={`duration-700 ease-in-out ${index === 0 ? 'block' : 'hidden'}`}

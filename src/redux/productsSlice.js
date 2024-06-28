@@ -59,11 +59,15 @@ const productsSlice = createSlice({
     valueSearch: "",
     dataSearch: [],
     dataFilter: [],
+    dataClick: {},
     status: "idle",
     error: null,
   },
   reducers: {
     // Reducer to set product database data
+    setDataClick: (state, action) => {
+      state.dataDetail = action.payload;
+    },
     setDataProductDB: (state, action) => {
       localStorage.setItem("Data-Product-DB", JSON.stringify(action.payload));
       state.dataDetail = action.payload;
@@ -75,10 +79,12 @@ const productsSlice = createSlice({
     },
     // Reducer to set search value
     setValueSearch: (state, action) => {
+      localStorage.setItem("valueSearch", JSON.stringify(action.payload));
       state.valueSearch = action.payload;
     },
     // Reducer to set search result data
     setDataSearch: (state, action) => {
+      localStorage.setItem("dataSearch", JSON.stringify(action.payload));
       state.dataSearch = action.payload;
     },
     // Reducer to set filtered data

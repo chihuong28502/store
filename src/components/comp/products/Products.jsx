@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { fetchProducts } from "@/redux/productsSlice";
 import { useEffect, useState } from "react";
@@ -7,14 +8,8 @@ import Pagination from "../pagination/Pagination";
 import Filter from "./comp/Filter";
 import Product from "./product/Product";
 
-function Products() {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.data);
-  const status = useSelector((state) => state.products.status);
+function Products({ products, status, titleText, isFilter }) {
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -29,19 +24,20 @@ function Products() {
   const handleProductClick = (product) => {
   };
 
-  if (status !== "succeeded") {
+  if (status == "loading" || status == "failed") {
     return <Loading />;
   }
 
   return (
     <>
       <div className="container mx-auto py-8 2xl:px-11">
-        <div className="flex justify-center lg:justify-normal">
+        <div className="flex justify-center">
           {/* Sidebar */}
-          <Filter />
+          {isFilter && <Filter />}
+
           {/* Main Content */}
           <div className="w-3/4 p-4">
-            <h1 className="text-3xl font-bold mb-4">BOTTOM</h1>
+            <h1 className="text-3xl font-bold mb-4">{titleText}</h1>
             <nav className="mb-4">
               <a href="#" className="text-lg font-medium mr-4">
                 Pants
@@ -59,9 +55,8 @@ function Products() {
             <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6">
               {currentItems?.map((product, index) => (
                 <Product
-                  key={index}
+                  key={product.id}
                   product={product}
-                  onClick={handleProductClick}
                 />
               ))}
             </div>
