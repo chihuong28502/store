@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
-import { deleteDBItem, setDataProductDB, updateProduct } from '@/redux/productsSlice';
+import { addProducts, deleteDBItem, setDataProductDB, updateProduct } from '@/redux/productsSlice';
 import formatCurrency from '@/utils/formatMoney';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { v4 as uuidv4 } from 'uuid';
+import ModalAddProductsDB from '../modal/ModalAddProductsDB';
 import ModalEditProductsDB from '../modal/ModalEditProductsDB';
 
 function ProductsDB({ data }) {
@@ -12,6 +14,7 @@ function ProductsDB({ data }) {
   const dataDispatch = useSelector((state) => state.products.data);
   const [products, setProducts] = useState(dataDispatch);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
   const [editedProduct, setEditedProduct] = useState({
     series: '',
     name: '',
@@ -21,20 +24,59 @@ function ProductsDB({ data }) {
     imageSrc: '',
     logo: '',
   });
+  const [addProduct, setAddProduct] = useState(
+    {
+      "id": uuidv4(),
+      "name": "",
+      "price": 0,
+      "composition": "",
+      "series": "",
+      "imageSrc": "",
+      "imageDetail": [
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_zO81Wj9w1k.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240327_cvHmFftB5M.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_pC5qPLcJFi.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240313_UerGjLDevQ.jpeg",
+        "https://pos.nvncdn.com/b3bf61-16762/ps/20240402_SOOk0wM2WH.png"
+      ],
+      "sizes": [
+        {
+          "size": "S",
+          "quantity": 0
+        },
+        {
+          "size": "M",
+          "quantity": 15
+        },
+        {
+          "size": "L",
+          "quantity": 20
+        },
+        {
+          "size": "XL",
+          "quantity": 0
+        }
+      ],
+      "tags": [
+        "thời trang",
+        "nam",
+        "mùa hè"
+      ]
+    }
+  );
 
   useEffect(() => {
-    setProducts(data)
+    setProducts(data);
   }, [data]);
 
   const handleDelete = async (product) => {
     if (window.confirm('Bạn có muốn xóa sản phẩm này không?')) {
       try {
         await dispatch(deleteDBItem(product?.id));
-        toast.success(`Xóa thành công sản phẩm ${product?.name}`)
+        toast.success(`Xóa thành công sản phẩm ${product?.name}`);
       } catch (error) {
         // console.error('Error deleting product:', error);
-        toast.error(`Xóa khoonh thành công sản phẩm ${product?.name}`)
-
+        toast.error(`Xóa không thành công sản phẩm ${product?.name}`);
       }
     }
   };
@@ -43,7 +85,7 @@ function ProductsDB({ data }) {
     setEditedProduct({ ...product });
     setIsModalOpen(true);
   };
-  console.log(editedProduct);
+
   const handleEditChange = (e) => {
     const { name, value } = e.target;
     setEditedProduct((prev) => ({
@@ -52,31 +94,69 @@ function ProductsDB({ data }) {
     }));
   };
 
-
   const handleEditSubmit = async () => {
     try {
       await dispatch(updateProduct(editedProduct));
       setIsModalOpen(false);
-      toast.success(`Sửa thành công sản phẩm`)
-
+      toast.success(`Sửa thành công sản phẩm`);
     } catch (error) {
       // console.error('Error updating product:', error);
-      toast.error(`Sửa không thành công sản phẩm`)
-
+      toast.error(`Sửa không thành công sản phẩm`);
     }
   };
 
   const handleClickProductDB = async (product) => {
     await dispatch(setDataProductDB(product));
     // bấm xem để check all size
-
   };
 
+  const handleAddClick = () => {
+    setIsModalOpenAdd(true);
+  };
+
+  const handleAddChange = (e) => {
+    const { name, value } = e.target;
+    setAddProduct((prev) => ({
+      ...prev,
+      [name]: name === 'price' ? parseFloat(value) : value,
+    }));
+  };
+
+  const handleAddSubmit = async () => {
+    try {
+      await dispatch(addProducts(addProduct));
+      setIsModalOpenAdd(false);
+      toast.success(`Thêm thành công sản phẩm`);
+    } catch (error) {
+      // console.error('Error adding product:', error);
+      toast.error(`Thêm không thành công sản phẩm`);
+    }
+  };
   return (
     <>
       <div className="w-full h-screen overflow-x-hidden border-t flex flex-col">
-        <main className="w-full flex-grow p-6">
-          <h1 className="text-3xl text-black pb-6">Products</h1>
+        <main className="w-full flex-grow p-6 flex justify-between">
+          <h1 className="text-3xl text-black pb-6 flex">Products</h1>
+          <button
+            title="Add New"
+            className="group cursor-pointer outline-none hover:rotate-90 duration-300"
+            onClick={handleAddClick}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50px"
+              height="50px"
+              viewBox="0 0 24 24"
+              className="stroke-black fill-none group-hover:fill-[#999] group-active:stroke-indigo-200 group-active:fill-indigo-600 group-active:duration-0 duration-300"
+            >
+              <path
+                d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                strokeWidth="1.5"
+              />
+              <path d="M8 12H16" strokeWidth="1.5" />
+              <path d="M12 16V8" strokeWidth="1.5" />
+            </svg>
+          </button>
         </main>
         <div className="w-full h-screen">
           <div className="flex flex-wrap mx-3">
@@ -154,12 +234,6 @@ function ProductsDB({ data }) {
             </div>
           </div>
         </div>
-        <footer className="w-full bg-white text-right p-4">
-          Built by
-          <a className="underline mx-2">
-            Madara02xz
-          </a>
-        </footer>
       </div>
 
       <ModalEditProductsDB
@@ -168,6 +242,12 @@ function ProductsDB({ data }) {
         editedProduct={editedProduct}
         handleEditChange={handleEditChange}
         handleEditSubmit={handleEditSubmit}
+      /> <ModalAddProductsDB
+        isOpen={isModalOpenAdd}
+        onRequestClose={() => setIsModalOpenAdd(false)}
+        addProduct={addProduct}
+        handleAddChange={handleAddChange}
+        handleAddSubmit={handleAddSubmit}
       />
     </>
   );

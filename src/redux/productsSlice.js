@@ -1,5 +1,3 @@
-// productsSlice.js
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BaseURL } from "@/utils/http";
@@ -14,45 +12,45 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+// Async thunk to add a new product
+export const addProducts = createAsyncThunk(
+  "products/addProducts",
+  async (product) => {
+    const response = await axios.post(`${BaseURL}products`, product);
+    return response.data;
+  }
+);
+
 // Async thunk to update a product
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async (updatedProduct) => {
-    try {
-      const response = await axios.put(
-        `${BaseURL}products/${updatedProduct.id}`,
-        updatedProduct
-      );
-      return response.data; // Return the updated product data from the API response
-    } catch (error) {
-      throw Error(error.response.data.message); // Throw an error with the message from the server response
-    }
+    const response = await axios.put(
+      `${BaseURL}products/${updatedProduct.id}`,
+      updatedProduct
+    );
+    return response.data;
   }
 );
 
-// Async thunk to update product sizes and quantitySize
+// Async thunk to update product sizes
 export const updateProductSizes = createAsyncThunk(
   "products/updateProductSizes",
   async ({ id, sizes }) => {
-    try {
-      const response = await axios.patch(`${BaseURL}products/${id}`, { sizes });
-      return response.data; // Return the updated product with sizes and quantitySize
-    } catch (error) {
-      throw Error(error.response.data.message); // Throw an error with the message from the server response
-    }
+    const response = await axios.patch(`${BaseURL}products/${id}`, { sizes });
+    return response.data;
   }
 );
+
+// Async thunk to delete a product
 export const deleteDBItem = createAsyncThunk(
-  "cart/deleteDBItem",
+  "products/deleteDBItem",
   async (id) => {
-    try {
-      await axios.delete(`${BaseURL}products/${id}`);
-      return id;
-    } catch (error) {
-      throw Error(error.response.data.message || error.message);
-    }
+    await axios.delete(`${BaseURL}products/${id}`);
+    return id;
   }
 );
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -61,7 +59,6 @@ const productsSlice = createSlice({
     valueSearch: "",
     dataSearch: [],
     dataFilter: [],
-    dataCheckDB: null,
     status: "idle",
     error: null,
   },
@@ -102,12 +99,22 @@ const productsSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      .addCase(addProducts.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addProducts.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data.push(action.payload);
+      })
+      .addCase(addProducts.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
       .addCase(updateProduct.pending, (state) => {
         state.status = "loading";
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Update the product in the state data array
         state.data = state.data.map((product) =>
           product.id === action.payload.id ? action.payload : product
         );
@@ -122,7 +129,6 @@ const productsSlice = createSlice({
       .addCase(updateProductSizes.fulfilled, (state, action) => {
         state.status = "succeeded";
         localStorage.setItem("Data-Product-DB", JSON.stringify(action.payload));
-
         state.data = state.data.map((product) =>
           product.id === action.payload.id ? action.payload : product
         );
@@ -136,8 +142,7 @@ const productsSlice = createSlice({
       })
       .addCase(deleteDBItem.fulfilled, (state, action) => {
         state.status = "succeeded";
-        const idToDelete = action.payload;
-        state.data = state.data.filter((item) => item.id !== idToDelete);
+        state.data = state.data.filter((item) => item.id !== action.payload);
         localStorage.setItem("products", JSON.stringify(state.data));
       })
       .addCase(deleteDBItem.rejected, (state, action) => {

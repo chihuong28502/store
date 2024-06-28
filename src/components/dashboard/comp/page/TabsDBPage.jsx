@@ -1,3 +1,4 @@
+import Footer from '../Footer'
 import Header from '../HeaderDB'
 import NavigationDB from '../NavigationDB'
 import TabsDB from '../TabsDB'
@@ -10,6 +11,7 @@ function TabsDBPage() {
         <div className="flex flex-col w-full">
           <Header />
           <TabsDB />
+          <Footer />
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import Products from "@/components/comp/products/Products"
 import Slider from "@/components/comp/slider/Slider"
 
 function ProductsPage() {
-  
   return (
     <>
       <Header />

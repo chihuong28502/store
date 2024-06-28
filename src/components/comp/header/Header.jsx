@@ -6,13 +6,11 @@ import ModalBag from "./modal/ModalBag"
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchCart } from "@/redux/cartSlice";
-import { fetchProducts } from "@/redux/productsSlice";
 
 function Header() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCart());
-    dispatch(fetchProducts());
   }, [dispatch]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

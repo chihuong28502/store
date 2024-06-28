@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const NavigationDB = () => {
   return (
     <div>
-      <aside className="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+      <aside className="relative bg-sidebar h-screen w-64 hidden lg:block shadow-xl">
         <div className="p-6">
           <a href="/" className="text-black text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
           <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">

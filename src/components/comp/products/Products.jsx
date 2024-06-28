@@ -11,7 +11,7 @@ function Products() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
   const status = useSelector((state) => state.products.status);
-  console.log(1);
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);

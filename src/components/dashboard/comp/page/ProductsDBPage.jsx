@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../HeaderDB';
 import NavigationDB from '../NavigationDB';
 import ProductsDB from '../ProductsDB';
+import Footer from '../Footer';
 
 function ProductsDBPage() {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ function ProductsDBPage() {
         <div className="flex flex-col w-full">
           <Header />
           <ProductsDB data={products} />
+          <Footer />
+
         </div>
       </div>
     </div>

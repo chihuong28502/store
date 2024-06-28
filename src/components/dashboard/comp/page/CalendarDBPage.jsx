@@ -1,4 +1,5 @@
 import CalendarDB from '../CalendarDB'
+import Footer from '../Footer'
 import Header from '../HeaderDB'
 import NavigationDB from '../NavigationDB'
 
@@ -10,6 +11,7 @@ function CalendarDBPage() {
         <div className="flex flex-col w-full">
           <Header />
           <CalendarDB />
+          <Footer />
         </div>
       </div>
     </div>

@@ -10,17 +10,17 @@ function ModalEditSize({ data, isOpen, onRequestClose, editedProduct, handleEdit
 
     try {
       const updatedSize = {
-        size: editedProduct.size,
-        quantity: editedProduct.quantity,
+        size: editedProduct?.size,
+        quantity: editedProduct?.quantity,
       };
 
       // Prepare updated sizes array
-      const updatedSizes = data?.sizes.map((sizeObj) =>
+      const updatedSizes = data?.sizes?.map((sizeObj) =>
         sizeObj.size === editedProduct?.size ? updatedSize : sizeObj
       );
 
       // Dispatch updateProductSizes thunk
-      await dispatch(updateProductSizes({ id: data.id, sizes: updatedSizes }));
+      await dispatch(updateProductSizes({ id: data?.id, sizes: updatedSizes }));
       onRequestClose();
     } catch (error) {
       console.error("Failed to update product sizes:", error);

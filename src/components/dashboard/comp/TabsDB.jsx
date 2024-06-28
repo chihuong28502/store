@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Footer from './Footer';
 
 function TabsDB() {
   const [openTab, setOpenTab] = useState(1);
@@ -63,10 +64,7 @@ function TabsDB() {
           </div>
         </div>
       </main>
-
-      <footer className="w-full bg-white text-right p-4">
-        Built by <a href="https://davidgrzyb.com" target="_blank" rel="noopener noreferrer" className="underline">David Grzyb</a>.
-      </footer>
+     
     </div>
   );
 }

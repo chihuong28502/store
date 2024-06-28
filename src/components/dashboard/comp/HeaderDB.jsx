@@ -7,7 +7,7 @@ const Header = () => {
   const [openTab, setOpenTab] = useState(1);
   return (
     <> {/* Desktop Header */}
-      <header className="w-full items-center bg-white py-2 px-6 hidden sm:flex ">
+      <header className="items-center bg-white py-2 px-6 hidden lg:flex ">
         <div className="w-1/2"></div>
         <div className="relative w-1/2 flex justify-end ">
           <button
@@ -30,7 +30,7 @@ const Header = () => {
       </header>
 
       {/* Mobile Header & Nav */}
-      <header className="w-full bg-sidebar py-5 px-6 sm:hidden">
+      <header className="w-full bg-sidebar py-5 px-6 lg:hidden">
         <div className="flex items-center justify-between">
           <a href="index.html" className="text-dark text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
           <button

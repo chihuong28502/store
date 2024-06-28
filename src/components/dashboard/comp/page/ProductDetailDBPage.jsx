@@ -1,3 +1,4 @@
+import Footer from "../Footer"
 import Header from "../HeaderDB"
 import NavigationDB from "../NavigationDB"
 import ProductDetailDB from "../ProductDetailDB"
@@ -10,6 +11,8 @@ function ProductDetailDBPage() {
         <div className="flex flex-col w-full">
           <Header />
           <ProductDetailDB />
+          <Footer />
+
         </div>
       </div>
     </div></>
