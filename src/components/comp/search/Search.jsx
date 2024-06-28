@@ -1,34 +1,35 @@
 /* eslint-disable no-undef */
 import { setDataSearch, setValueSearch } from '@/redux/productsSlice';
 import formatText from '@/utils/formatText';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const [valueChange, setValueChange] = useState('')
   const value = useSelector((state) => state.products.valueSearch);
-  const products = useMemo(() => JSON.parse(localStorage.getItem("products")) || [], []);
-  useEffect(() => {
+  const [valueChange, setValueChange] = useState('');
+  const products = useSelector((state) => state.products.data)
 
+  useEffect(() => {
   }, [value, dispatch, products]);
 
   const handleInputChange = (e) => {
     setValueChange(e.target.value);
   };
+
   const handleClickSearch = () => {
-    if (value) {
-      console.log(value);
-      const filteredProducts = products.filter((item) =>
+    if (valueChange) {
+      const filteredProducts = products?.filter((item) =>
         formatText(item.name).includes(formatText(valueChange))
       );
-      dispatch(setDataSearch(filteredProducts));
       dispatch(setValueSearch(valueChange));
+      dispatch(setDataSearch(filteredProducts));
     } else {
       dispatch(setDataSearch([]));
     }
-  }
+  };
+
   return (
     <div className="max-w-md mx-auto z-30 mt-16 pt-5">
       <label
@@ -66,7 +67,7 @@ const Search = () => {
         />
         <Link
           onClick={() => handleClickSearch()}
-          to={`/search/${value}`}
+          to={`/search/${valueChange}`}
           className="text-white absolute right-2.5 bottom-[0.3rem] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Search

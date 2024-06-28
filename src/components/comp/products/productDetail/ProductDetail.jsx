@@ -92,7 +92,6 @@ export default function ProductDetail() {
 
   const renderCrossLines = (size) => {
     const selectedSizeObj = userData.sizes.find(item => item.size === size);
-    console.log(selectedSizeObj);
     if ((selectedSizeObj && !(selectedSizeObj?.quantity > 0))) {
       return (
         <>

@@ -9,8 +9,8 @@ function SearchListPage() {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.products.dataSearch);
   const valueSearch = useSelector((state) => state.products.valueSearch);
-  const [dataLocalStorage, setDataLocalStorage] = useState()
-  const [valueLocalStorage, setValueLocalStorage] = useState()
+  const [dataLocalStorage, setDataLocalStorage] = useState(data)
+  const [valueLocalStorage, setValueLocalStorage] = useState(valueSearch)
   const status = useSelector((state) => state.products.status);
   useEffect(() => {
     setDataLocalStorage(JSON.parse(localStorage.getItem('dataSearch')))
