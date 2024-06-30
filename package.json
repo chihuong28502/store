@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "formatter": "prettier --single-quote --trailing-comma all --tab-width 4 --write 'src/**/*.{js,json,jsx}'",
+    "format": "prettier --single-quote --trailing-comma none --tab-width 2 --semi false --write 'src/**/*.{js,json,jsx}'",
     "preview": "vite preview",
     "test": "jest"
   },
