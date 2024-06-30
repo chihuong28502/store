@@ -1,13 +1,13 @@
-import Header from '@/components/comp/header/Header'
-import Register from '@/components/auth/register/Register'
+import Header from '@/components/comp/header/Header';
+import Register from '@/components/auth/register/Register';
 
 function RegisterPage() {
-  return (
-    <>
-      <Header />
-      <Register />
-    </>
-  )
+    return (
+        <>
+            <Header />
+            <Register />
+        </>
+    );
 }
 
-export default RegisterPage
+export default RegisterPage;

@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "formatter": "prettier --single-quote --trailing-comma all --tab-width 4 --write 'src/**/*.{js,json,jsx}'",
     "preview": "vite preview",
     "test": "jest"
   },
@@ -42,6 +43,7 @@
     "jest": "^29.7.0",
     "postcss": "^8.4.38",
     "postcss-import": "^16.1.0",
+    "prettier": "^3.3.2",
     "vite": "^5.2.0"
   }
 }
